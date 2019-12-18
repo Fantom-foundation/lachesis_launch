@@ -69,7 +69,7 @@ Nonce = 0
 [Lachesis.Net.Genesis.Alloc.GValidators.1]
 ID = 1
 Address = "0xfD09f0296AF88ac777c137eCd92d85583a9b9E4a"
-Stake = 3175000000000000000000000
+Stake = 3175000
 
 [Lachesis.Net.Dag]
 MaxParents = 5
