@@ -41,7 +41,7 @@ NetworkID = 1
 Time = 1565000000000000000
 ExtraData = []
 
-[Lachesis.Net.Genesis.Alloc.Accounts.0x3a2851d7bc1725c89ab2fdfaf9b27ab3ee75f07f]
+[Lachesis.Net.Genesis.Alloc.Accounts.0xfD09f0296AF88ac777c137eCd92d85583a9b9E4a]
 Code = []
 Balance = 2000000000000000000000000000
 Nonce = 0
