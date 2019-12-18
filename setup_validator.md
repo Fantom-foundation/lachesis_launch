@@ -142,6 +142,3 @@ ftm.getTransactionReceipt(tx) // check tx is confirmed. If it doesn't get confir
 
 sfc.stakerIDs(YOUR_ADDRESS) // when tx gets confirmed, should be non-zero
 ```
-
-
-admin.addPeer("enode://4f320365127dceacb58411280ad24864aba1f419775b75414eeca307dbd5696f2923b5ef67143482541906b2fde0c0eb8461f6fab65f3614fc16d8f387e7c459@54.194.134.84:5050")
