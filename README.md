@@ -70,8 +70,8 @@ COMMANDS:
 Download the default genesis config.toml
 
 ```
-cd $HOME/go/src/github.com/Fantom-foundation/go-lachesis/
-wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/config.toml .
+cd $HOME/go/src/github.com/Fantom-foundation/go-lachesis/build/
+wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/config.toml
 ```
 
 Start your node
