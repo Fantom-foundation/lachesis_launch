@@ -1,6 +1,7 @@
 [Install golang](#install-golang)  
 [Installing build tools](#installing-build-tools)  
-[Installing go-lachesis](#installing-go--lachesis)  
+[Installing go-lachesis](#installing-go-lachesis)  
+[Installing the Special Fee Contract](#installing-the-special-fee-contract)  
 [Creating a validator](#create-a-validator-on-the-sfc)  
 Joining the mainnet  
 Transferring tokens from ERC20 or BEP2 to mainnet  
