@@ -6,6 +6,8 @@
 [Adding funds to an account](#adding-funds-to-an-account)  
 [Create a validator on the SFC](#create-a-validator-on-the-sfc)  
 [Startup as a validator](#startup-as-a-validator)  
+[Troubleshooting](#troubleshooting)  
+[Error: insufficient funds for gas * price + value](#error-insufficient-funds-for-gas--price--value)  
 
 
 
