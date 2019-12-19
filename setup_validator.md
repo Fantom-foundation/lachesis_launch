@@ -192,3 +192,9 @@ Start the node
 ```
 ./lachesis --config config.toml --nousb --coinbase 0x --unlock 0x --password /path/to/password
 ```
+
+### Start up a read only server
+
+```
+./lachesis --config config.toml --nousb --rpc --rpcaddr=0.0.0.0 --rpcport=3001 --rpcvhosts=* --rpccorsdomain=* --rpcapi=eth,debug,admin,web3,personal,net,txpool,ftm,sfc --ws --wsaddr=0.0.0.0 --wsport=3500 --wsorigins=* --wsapi=eth,debug,admin,web3,personal,net,txpool,ftm,sfc --verbosity 4
+```
