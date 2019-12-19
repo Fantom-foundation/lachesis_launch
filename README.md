@@ -2,6 +2,10 @@
 [Installing build tools](#installing-build-tools)  
 [Installing go-lachesis](#installing-go-lachesis)  
 [Joining the mainnet](#joining-the-mainnet)  
+[Creating a new account](#creating-a-new-account)  
+[Adding funds to an account](#adding-funds-to-an-account)  
+[Create a validator on the SFC](#create-a-validator-on-the-sfc)  
+[Startup as a validator](#startup-as-a-validator)  
 
 
 
