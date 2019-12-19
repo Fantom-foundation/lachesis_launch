@@ -155,4 +155,17 @@ Start the node
 ```
 ./lachesis --config config.toml --nousb --coinbase 0x --unlock 0x --password /path/to/password
 ```
+### Troubleshooting
+
+#### Error: insufficient funds for gas * price + value
+
+First check balance to ensure that balance is greater than required balance;
+
+```
+ftm.getBalance("0x")
+```
+
+Default gas limit is 21000 and gas price is 1000000000, so minimum funds should be > 2100000000000
+
+If sufficient Balance, the local DB and state have not yet synced. Stop and restart your ./lachesis node and retry
 
