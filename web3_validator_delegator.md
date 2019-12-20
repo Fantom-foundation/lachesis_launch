@@ -25,16 +25,9 @@ sfc.stakers(1) // if everything is all right, will return non-zero values
 Delegate a certain number of FTM to a delegator. Note that you can only delegate to one validator per address
 
 ```
-const YOUR_ADDRESS = <address>
+YOUR_ADDRESS = <address>
 personal.unlockAccount(YOUR_ADDRESS, <password>, 60) // make sure account is unlocked
-tx = sfc.createDelegation(validator_address, {from: YOUR_ADDRESS, value: "<amount>" }, (err) => { // amount must be at least 1 FTM
-        if (err){
-          console.log(error)
-        } else{
-          // Successfully delegated stake!
-          console.log('Successfully delegated stake!')
-        }
-     });
+tx = sfc.createDelegation(<stakerID>, {from: YOUR_ADDRESS, value: "<amount>"});
 ```
 
 ### Increase Delegation Stake
@@ -42,14 +35,7 @@ tx = sfc.createDelegation(validator_address, {from: YOUR_ADDRESS, value: "<amoun
 ```
 // Increase Delegator Stake
 personal.unlockAccount(<address>, "password", 60) // make sure account is unlocked
-tx = sfc.increaseDelegationStake({from:YOUR_ADDRESS, value: "<amount>"}, (err) => {
-    if (err){
-      console.log(error)
-    } else{
-      // Successfully increased delegated stake!
-      console.log('Successfully increased delegated stake!!')
-    }
-  });
+tx = sfc.increaseDelegationStake({from:YOUR_ADDRESS, value: "<amount>"});
 ```
 
 ### Claim Delegation Rewards
@@ -57,32 +43,18 @@ tx = sfc.increaseDelegationStake({from:YOUR_ADDRESS, value: "<amount>"}, (err) =
 Claim rewards earned from delegating your stake
 
 ```
-const YOUR_ADDRESS = <address>
+YOUR_ADDRESS = <address>
 personal.unlockAccount(YOUR_ADDRESS, <password>, 60) // make sure account is unlocked
-tx = sfc.claimDelegationRewards({from_epoch, max_epochs}, (err) => {
-        if (err){
-          console.log(error)
-        } else{
-          // claiming was successful
-          console.log('success!')
-        }
-     });
+tx = sfc.claimDelegationRewards(from_epoch, max_epochs, {from: YOUR_ADDRESS});
 ```
 
 ### Request to withdraw delegated stake
 
 Put in a request to withdraw delegated stake. After a number of seconds and epochs have passed since calling the function below, you will be able to call withdrawDelegation() successfully
 ```
-const YOUR_ADDRESS = <address>
+YOUR_ADDRESS = <address>
 personal.unlockAccount(YOUR_ADDRESS, <password>, 60) // make sure account is unlocked
-tx = sfc.PreparedToWithdrawDelegation({ from:YOUR_ADDRESS, value: "0" }, (err) => {
-        if (err){
-          console.log(error)
-        } else{
-          // Request successfully submitted!
-          console.log('Request successfully submitted!')
-        }
-     });
+tx = sfc.prepareToWithdrawDelegation({from: YOUR_ADDRESS});
 ```
 
 
@@ -91,19 +63,12 @@ tx = sfc.PreparedToWithdrawDelegation({ from:YOUR_ADDRESS, value: "0" }, (err) =
 Withdraw delegated stake. Note that a number of seconds and epochs must elaspe before you can then run
 
 ```
-const YOUR_ADDRESS = <address>
+YOUR_ADDRESS = <address>
 personal.unlockAccount(YOUR_ADDRESS, <password>, 60) // make sure account is unlocked
-tx = sfc.withdrawDelegation({ from:YOUR_ADDRESS }, (err) => {
-        if (err){
-          console.log(error)
-        } else{
-          // Delegated stake successfully withdrawn!
-          console.log('Delegated stake successfully withdrawn!')
-        }
-     });
+tx = sfc.withdrawDelegation({from:YOUR_ADDRESS });
 ```
 
-## Staking
+## Validator Stakin g
 
 ### Create Validator
 
@@ -112,14 +77,7 @@ tx = sfc.withdrawDelegation({ from:YOUR_ADDRESS }, (err) => {
 YOUR_ADDRESS = <address>
 sfc.stakerIDs(YOUR_ADDRESS) // must be zero, i.e. doesn't exist yet
 personal.unlockAccount(YOUR_ADDRESS, "password", 60) // make sure account is unlocked
-tx = sfc.createStake({from:YOUR_ADDRESS, value: "<amount>"}, (err) => {
-    if (err){
-      console.log(error)
-    } else{
-      // Sucessfully created stake!
-      console.log('Request successfully submitted!')
-    }
-  }); // minimum 3,175,000 required to stake
+tx = sfc.createStake({from:YOUR_ADDRESS, value: "<amount>"}); // minimum 3,175,000 required to stake
 ```
 
 ### Increase Validator Stake
@@ -127,44 +85,15 @@ tx = sfc.createStake({from:YOUR_ADDRESS, value: "<amount>"}, (err) => {
 ```
 // Create Staker
 personal.unlockAccount(<address>, "password", 60) // make sure account is unlocked
-tx = sfc.increaseStake({from:YOUR_ADDRESS, value: "<amount>"}, (err) => {
-    if (err){
-      console.log(error)
-    } else{
-      // Successfully increased stake!
-      console.log('Successfully increased stake!')
-    }
-  });
-```
-
-### Increase Validator Stake
-
-```
-// Increase validator stake
-personal.unlockAccount(<address>, "password", 60) // make sure account is unlocked
-tx = sfc.increaseStake({from:YOUR_ADDRESS, value: "<amount>"}, (err) => {
-    if (err){
-      console.log(error)
-    } else{
-      // Successfully increased stake!
-      console.log('Successfully increased stake!')
-    }
-  });
+tx = sfc.increaseStake({from:YOUR_ADDRESS, value: "<amount>"});
 ```
 
 ### Claim Validator rewards
 
 ```
 // Claim validator rewards
-personal.unlockAccount(<address>, "password", 60) // make sure account is unlocked
-tx = sfc.increaseStake(from_epoch, to_epoch, {from: <address>, value: "0"}, (err) => {
-    if (err){
-      console.log(error)
-    } else{
-      // Successfully claimed validator rewards!
-      console.log('Successfully claimed validator rewards!')
-    }
-  });
+personal.unlockAccount(YOUR_ADDRESS, "password", 60) // make sure account is unlocked
+tx = sfc.claimValidatorRewards(from_epoch, to_epoch, {from: YOUR_ADDRESS});
 ```
 
 ### Request to withdraw stake
@@ -172,15 +101,8 @@ tx = sfc.increaseStake(from_epoch, to_epoch, {from: <address>, value: "0"}, (err
 ```
 // Put in a request to withdraw stake, can then call withdrawStake() functions after
 // enough seconds and epochs have passed
-personal.unlockAccount(<address>, "password", 60) // make sure account is unlocked
-tx = sfc.PreparedToWithdrawStake({from: <address>, value: "0"}, (err) => {
-    if (err){
-      console.log(error)
-    } else{
-      // Successfully requested to withdraw stake!
-      console.log('Successfully requested to withdraw stake!')
-    }
-  });
+personal.unlockAccount(YOUR_ADDRESS, "password", 60) // make sure account is unlocked
+tx = sfc.prepareToWithdrawStake({from: YOUR_ADDRESS});
 ```
 
 ### Withdraw Stake
@@ -188,13 +110,6 @@ tx = sfc.PreparedToWithdrawStake({from: <address>, value: "0"}, (err) => {
 ```
 // After enough seconds and epochs have passed since calling PreparedToWithdrawStake(), you can
 // call this function successfully:
-personal.unlockAccount(<address>, "password", 60) // make sure account is unlocked
-tx = sfc.withdrawStake({from: <address>, value: "0"}, (err) => {
-    if (err){
-      console.log(error)
-    } else{
-      // Successfully withdrawn stake
-      console.log('Successfully withdrawn stake!')
-    }
-  });
+personal.unlockAccount(YOUR_ADDRESS, "password", 60) // make sure account is unlocked
+tx = sfc.withdrawStake({from: YOUR_ADDRESS});
 ```
