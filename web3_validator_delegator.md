@@ -37,6 +37,21 @@ tx = sfc.createDelegation(validator_address, {from: YOUR_ADDRESS, value: "<amoun
      });
 ```
 
+### Increase Delegation Stake
+
+```
+// Increase Delegator Stake
+personal.unlockAccount(<address>, "password", 60) // make sure account is unlocked
+tx = sfc.increaseDelegationStake({from:YOUR_ADDRESS, value: "<amount>"}, (err) => {
+    if (err){
+      console.log(error)
+    } else{
+      // Successfully increased delegated stake!
+      console.log('Successfully increased delegated stake!!')
+    }
+  });
+```
+
 ### Claim Delegation Rewards
 
 Claim rewards earned from delegating your stake
