@@ -1,4 +1,4 @@
-# Staking and Validating (Work in Progress)
+# Staking and Delegating (Work in Progress)
 
 **Note**: All references to "staker" and "stakers" refer to "validating nodes".
 
@@ -17,7 +17,7 @@ sfc = web3.ftm.contract(abi).at("0xfa00face00fc0000000000000000000000000100")
 
 ```
 // Sanity check
-sfc.stakers(1) // if everything is all right, will return non-zero values
+sfc.stakersNum() // if everything is all right, will return non-zero value
 ```
 
 ## Delegating
@@ -25,7 +25,11 @@ sfc.stakers(1) // if everything is all right, will return non-zero values
 
 ### Create Delegation
 
-Delegate a certain number of FTM to a delegator. Note that you can only delegate to one validator per address
+Delegate a certain number of FTM to a staker. Note that you can only delegate to one validator per address.
+
+If you already have a delegation, then you have to eigher create a new address or withdraw previous delegation.
+
+`amount` is set in Wei. Minimum delegation is 1000000000000000000 Wei (1 FTM).
 
 Limitations
 
@@ -38,25 +42,36 @@ Limitations
 
 ```
 YOUR_ADDRESS = <address>
-personal.unlockAccount(YOUR_ADDRESS, <password>, 60) // make sure account is unlocked
+personal.unlockAccount(YOUR_ADDRESS, <password>, 60) // unlock account for 60 second
 tx = sfc.createDelegation(<stakerID>, {from: YOUR_ADDRESS, value: "<amount>"});
 ```
+
+#### Checks
+- Staker must exist
+- Staker is active: staker isn't a cheater, isn't pruned for being offline, didn't prepare to withdraw
+- Delegated amount is greater or equal to 1 FTM
+- No more than one delegation per address
+- This address isn't a staker
+- `Total amount of delegations to staker` is less or equal to `15.0` * `staker's stake amount`.
 
 ### Increase Delegation Stake
 
 ```
 // Increase Delegator Stake
-personal.unlockAccount(<address>, "password", 60) // make sure account is unlocked
+personal.unlockAccount(<address>, "password", 60) // unlock account for 60 second
 tx = sfc.increaseDelegationStake({from:YOUR_ADDRESS, value: "<amount>"});
 ```
 
 ### Claim Delegation Rewards
 
-Claim rewards earned from delegating your stake
+Claim rewards earned from delegating your stake.
+
+- `from_epoch` is starting epoch from which rewards are claimed. If 0, then last claimed epoch + 1. If not sure, always use 0.
+- `max_epochs` is maximum number of epoch to claim rewards for. If not sure, use 40.
 
 ```
 YOUR_ADDRESS = <address>
-personal.unlockAccount(YOUR_ADDRESS, <password>, 60) // make sure account is unlocked
+personal.unlockAccount(YOUR_ADDRESS, <password>, 60) // unlock account for 60 second
 tx = sfc.claimDelegationRewards(from_epoch, max_epochs, {from: YOUR_ADDRESS});
 ```
 
@@ -65,7 +80,7 @@ tx = sfc.claimDelegationRewards(from_epoch, max_epochs, {from: YOUR_ADDRESS});
 Put in a request to withdraw delegated stake. After a number of seconds and epochs have passed since calling the function below, you will be able to call withdrawDelegation() successfully
 ```
 YOUR_ADDRESS = <address>
-personal.unlockAccount(YOUR_ADDRESS, <password>, 60) // make sure account is unlocked
+personal.unlockAccount(YOUR_ADDRESS, <password>, 60) // unlock account for 60 second
 tx = sfc.prepareToWithdrawDelegation({from: YOUR_ADDRESS});
 ```
 
@@ -76,7 +91,7 @@ Withdraw delegated stake. Note that a number of seconds and epochs must elaspe b
 
 ```
 YOUR_ADDRESS = <address>
-personal.unlockAccount(YOUR_ADDRESS, <password>, 60) // make sure account is unlocked
+personal.unlockAccount(YOUR_ADDRESS, <password>, 60) // unlock account for 60 second
 tx = sfc.withdrawDelegation({from:YOUR_ADDRESS });
 ```
 
@@ -88,7 +103,7 @@ tx = sfc.withdrawDelegation({from:YOUR_ADDRESS });
 // Create validator
 YOUR_ADDRESS = <address>
 sfc.stakerIDs(YOUR_ADDRESS) // must be zero, i.e. doesn't exist yet
-personal.unlockAccount(YOUR_ADDRESS, "password", 60) // make sure account is unlocked
+personal.unlockAccount(YOUR_ADDRESS, "password", 60) // unlock account for 60 second
 tx = sfc.createStake({from:YOUR_ADDRESS, value: "<amount>"}); // minimum 3,175,000 required to stake
 ```
 
@@ -96,7 +111,7 @@ tx = sfc.createStake({from:YOUR_ADDRESS, value: "<amount>"}); // minimum 3,175,0
 
 ```
 // Create Staker
-personal.unlockAccount(<address>, "password", 60) // make sure account is unlocked
+personal.unlockAccount(<address>, "password", 60) // unlock account for 60 second
 tx = sfc.increaseStake({from:YOUR_ADDRESS, value: "<amount>"});
 ```
 
@@ -104,7 +119,7 @@ tx = sfc.increaseStake({from:YOUR_ADDRESS, value: "<amount>"});
 
 ```
 // Claim validator rewards
-personal.unlockAccount(YOUR_ADDRESS, "password", 60) // make sure account is unlocked
+personal.unlockAccount(YOUR_ADDRESS, "password", 60) // unlock account for 60 second
 tx = sfc.claimValidatorRewards(from_epoch, to_epoch, {from: YOUR_ADDRESS});
 ```
 
@@ -113,7 +128,7 @@ tx = sfc.claimValidatorRewards(from_epoch, to_epoch, {from: YOUR_ADDRESS});
 ```
 // Put in a request to withdraw stake, can then call withdrawStake() functions after
 // enough seconds and epochs have passed
-personal.unlockAccount(YOUR_ADDRESS, "password", 60) // make sure account is unlocked
+personal.unlockAccount(YOUR_ADDRESS, "password", 60) // unlock account for 60 second
 tx = sfc.prepareToWithdrawStake({from: YOUR_ADDRESS});
 ```
 
@@ -122,6 +137,6 @@ tx = sfc.prepareToWithdrawStake({from: YOUR_ADDRESS});
 ```
 // After enough seconds and epochs have passed since calling PreparedToWithdrawStake(), you can
 // call this function successfully:
-personal.unlockAccount(YOUR_ADDRESS, "password", 60) // make sure account is unlocked
+personal.unlockAccount(YOUR_ADDRESS, "password", 60) // unlock account for 60 second
 tx = sfc.withdrawStake({from: YOUR_ADDRESS});
 ```
