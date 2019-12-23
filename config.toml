@@ -156,7 +156,6 @@ PackInfosCacheSize = 100
 ReceiptsCacheSize = 100
 TxPositionsCacheSize = 1000
 EpochStatsCacheSize = 100
-LastEpochHeadersCacheSize = 2
 StakersCacheSize = 4000
 DelegatorsCacheSize = 4000
 
