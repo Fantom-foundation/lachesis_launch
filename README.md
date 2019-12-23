@@ -191,10 +191,10 @@ Switch to build directory and remove previous genesis
 
 ```
 rm $HOME/go/src/github.com/Fantom-foundation/go-lachesis/build/config.toml
+rm -r $HOME/.lachesis/gossip-epoch-1-ldb
 rm -r $HOME/.lachesis/gossip-main-ldb
-rm -r $HOME/.lachesis/poset-epoch-2-ldb
+rm -r $HOME/.lachesis/poset-epoch-1-ldb
 rm -r $HOME/.lachesis/poset-main-ldb
-rm -r $HOME/.lachesis/gossip-epoch-2-ldb
 ```
 Deploy new genesis and start
 
