@@ -8,6 +8,7 @@
 [Startup as a validator](#startup-as-a-validator)  
 [Troubleshooting](#troubleshooting)  
 [Error: insufficient funds for gas * price + value](#error-insufficient-funds-for-gas--price--value)  
+[Upgrading lachesis](#upgrading-lachesis)  
 
 
 
@@ -170,4 +171,35 @@ ftm.getBalance("0x")
 Default gas limit is 21000 and gas price is 1000000000, so minimum funds should be > 2100000000000
 
 If sufficient Balance, the local DB and state have not yet synced. Stop and restart your ./lachesis node and retry
+
+### Upgrading lachesis
+
+Switch to lachesis working directory
+
+```
+cd $HOME/go/src/github.com/Fantom-foundation/go-lachesis
+```
+Update and build latest version
+
+```
+git pull origin master
+make build
+```
+
+Build output is found in ./build
+Switch to build directory and remove previous genesis
+
+```
+rm $HOME/go/src/github.com/Fantom-foundation/go-lachesis/build/config.toml
+rm -r $HOME/.lachesis/gossip-main-ldb
+rm -r $HOME/.lachesis/poset-epoch-2-ldb
+rm -r $HOME/.lachesis/poset-main-ldb
+rm -r $HOME/.lachesis/gossip-epoch-2-ldb
+```
+Deploy new genesis and start
+
+```
+wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/config.toml
+./lachesis --config config.toml --nousb --coinbase 0x --unlock 0x --password /path/to/password
+```
 
