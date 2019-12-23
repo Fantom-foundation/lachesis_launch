@@ -1,5 +1,7 @@
 # Staking and Validating (Work in Progress)
 
+**Note**: All references to "staker" and "stakers" refer to "validating nodes".
+
 
 ## Loading the sfc
 
@@ -20,9 +22,19 @@ sfc.stakers(1) // if everything is all right, will return non-zero values
 
 ## Delegating
 
+
 ### Create Delegation
 
 Delegate a certain number of FTM to a delegator. Note that you can only delegate to one validator per address
+
+Limitations
+
+* Staker must exist
+* Staker must not be a cheater
+* The delegated amount must be creater than 1 FTM (1 FTM = 10^18 units)
+* The address isn't currently delegated to another staker
+* The address is not a staker
+* The sum of delegated amounts + your delegation <= 15.0 * stake amount of the staker
 
 ```
 YOUR_ADDRESS = <address>
@@ -68,7 +80,7 @@ personal.unlockAccount(YOUR_ADDRESS, <password>, 60) // make sure account is unl
 tx = sfc.withdrawDelegation({from:YOUR_ADDRESS });
 ```
 
-## Validator Stakin g
+## Validator Staking
 
 ### Create Validator
 
