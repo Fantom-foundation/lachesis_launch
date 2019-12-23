@@ -71,12 +71,12 @@ Nonce = 0
 0xe90b7bceb6e7df5418fb78d8ee546e97c83a08bbccc01a0644d599ccd2a7c2e5 = "0x00000000000000000000000000000000000000000002a055184a310c12600000"
 0xe90b7bceb6e7df5418fb78d8ee546e97c83a08bbccc01a0644d599ccd2a7c2e8 = "0x0000000000000000000000007f9d1dbaf84d827b0840e38f555a490969978d20"
 
-[[Lachesis.Net.Genesis.Alloc.GValidators.1]]
+[[Lachesis.Net.Genesis.Alloc.GValidators]]
 ID = 1
 Address = "0x7f9d1dbaf84d827b0840e38f555a490969978d20"
 Stake = 3175000000000000000000000
 
-[[Lachesis.Net.Genesis.Alloc.GValidators.2]]
+[[Lachesis.Net.Genesis.Alloc.GValidators]]
 ID = 2
 Address = "0xfd09f0296af88ac777c137ecd92d85583a9b9e4a"
 Stake = 3175000000000000000000000
