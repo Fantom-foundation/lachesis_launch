@@ -247,7 +247,7 @@ Address = "0x51af0532e6bd89695266e714a1b09fd1ac297dc7"
 Stake = 10000000000000000000000000
 
 [Lachesis.Net.Dag]
-MaxParents = 7
+MaxParents = 10
 MaxFreeParents = 3
 MaxEpochBlocks = 1000
 MaxEpochDuration = 14400000000000
@@ -297,6 +297,7 @@ MaxGasRateGrowthFactor = 3e+00
 MaxTxsFromSender = 8
 SelfForkProtectionInterval = 600000000000
 EpochTailLength = 1
+MaxParents = 7
 SmoothTpsThreshold = 24500000
 NoTxsThreshold = 840000
 EmergencyThreshold = 140000
