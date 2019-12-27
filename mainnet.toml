@@ -1,5 +1,4 @@
-[Node]
-DataDir = "/home/egor-l/.lachesis"
+[Node]=
 omitempty = ""
 IPCPath = "lachesis.ipc"
 HTTPPort = 18545
@@ -296,7 +295,7 @@ MinEmitInterval = 450000000
 MaxEmitInterval = 600000000000
 MaxGasRateGrowthFactor = 3e+00
 MaxTxsFromSender = 8
-SelfForkProtectionInterval = 1800000000000
+SelfForkProtectionInterval = 30000000000
 EpochTailLength = 1
 SmoothTpsThreshold = 24500000
 NoTxsThreshold = 840000
