@@ -208,7 +208,7 @@ sfc.stakers(1) // if everything is allright, will return non-zero values
 YOUR_ADDRESS = "0xfE19B9Ae8b056eE11d20A8F530326a2C3b99ADca"
 sfc.stakerIDs(YOUR_ADDRESS) // must be zero, i.e. doesn't exist yet
 personal.unlockAccount(YOUR_ADDRESS, "password", 60) // make sure account is unlocked
-tx = sfc.createStake({from:YOUR_ADDRESS, value: "3175000000000000000000000"}) // 3175000.0 FTM
+tx = sfc.createStake([], {from:YOUR_ADDRESS, value: "3175000000000000000000000"}) // 3175000.0 FTM
 
 // Sanity checks
 ftm.getTransactionReceipt(tx) // check tx is confirmed. If it doesn't get confirmed, ensure blocks are created and your validators setup.

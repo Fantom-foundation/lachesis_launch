@@ -10,7 +10,7 @@ abi = JSON.parse('[{"constant":true,"inputs":[],"name":"minDelegation","outputs"
 
 
 // Assign contract functions to sfc variable
-sfc = web3.ftm.contract(abi).at("0xfa00face00fc0000000000000000000000000100")
+sfc = web3.ftm.contract(abi).at("0xfc00face00000000000000000000000000000000")
 ```
 
 ## Checking loading sfc has worked
@@ -110,7 +110,7 @@ Minimum stake is 3175000000000000000000000 Wei (3,175,000 FTM)
 ```
 // Create validator
 personal.unlockAccount(YOUR_ADDRESS, "password", 60) // unlock account for 60 second
-tx = sfc.createStake({from:YOUR_ADDRESS, value: "<amount>"}) // minimum 3,175,000 FTM required to stake
+tx = sfc.createStake([], {from:YOUR_ADDRESS, value: "<amount>"}) // minimum 3,175,000 FTM required to stake
 ```
 
 #### Checks
