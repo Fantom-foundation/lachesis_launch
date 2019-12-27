@@ -112,7 +112,7 @@ Take the binary output from Stakers.bin and convert to a uint8 array;
 Add the uint8 array to your config.toml under
 
 ```
-[Lachesis.Net.Genesis.Alloc.Accounts.0xfa00face00fc0000000000000000000000000100]
+[Lachesis.Net.Genesis.Alloc.Accounts.0xfc00face00000000000000000000000000000000]
 ```
 
 ### Configure SFC
@@ -148,10 +148,10 @@ Address = "0xfd09f0296af88ac777c137ecd92d85583a9b9e4a"
 Stake = 10000000
 ```
 
-The contract we compiled and deployed to 0xfa00face00fc0000000000000000000000000100 needs to have it's contract storage adjusted to keep track of the above values, so add them as follows;
+The contract we compiled and deployed to 0xfc00face00000000000000000000000000000000 needs to have it's contract storage adjusted to keep track of the above values, so add them as follows;
 
 ```
-[Lachesis.Net.Genesis.Alloc.Accounts.0xfa00face00fc0000000000000000000000000100.Storage]
+[Lachesis.Net.Genesis.Alloc.Accounts.0xfc00face00000000000000000000000000000000.Storage]
 0x0000000000000000000000000000000000000000000000000000000000000004 = "0x0000000000000000000000000000000000000000000000000000000000000002"
 0x0000000000000000000000000000000000000000000000000000000000000005 = "0x0000000000000000000000000000000000000000000000000000000000000002"
 0x0000000000000000000000000000000000000000000000000000000000000006 = "0x000000000000000000000000000000000000000000000001158e460913d00000"
@@ -199,7 +199,7 @@ ABI
 ```
 // Init SFC contract context
 abi = JSON.parse('YOUR_ABI_HERE')
-sfc = web3.ftm.contract(abi).at("0xfa00face00fc0000000000000000000000000100")
+sfc = web3.ftm.contract(abi).at("0xfc00face00000000000000000000000000000000")
 
 // Sanity check
 sfc.stakers(1) // if everything is allright, will return non-zero values
@@ -208,7 +208,7 @@ sfc.stakers(1) // if everything is allright, will return non-zero values
 YOUR_ADDRESS = "0xfE19B9Ae8b056eE11d20A8F530326a2C3b99ADca"
 sfc.stakerIDs(YOUR_ADDRESS) // must be zero, i.e. doesn't exist yet
 personal.unlockAccount(YOUR_ADDRESS, "password", 60) // make sure account is unlocked
-tx = sfc.createStake({from:YOUR_ADDRESS, value: "3175000000000000000000000"}) // 3175000.0 FTM
+tx = sfc.createStake([], {from:YOUR_ADDRESS, value: "3175000000000000000000000"}) // 3175000.0 FTM
 
 // Sanity checks
 ftm.getTransactionReceipt(tx) // check tx is confirmed. If it doesn't get confirmed, ensure blocks are created and your validators setup.
