@@ -190,7 +190,7 @@ Create an unlock file for the account password
 Start the node
 
 ```
-./lachesis --config config.toml --nousb --coinbase 0x --unlock 0x --password /path/to/password
+./lachesis --config config.toml --nousb --validator 0x --unlock 0x --password /path/to/password
 ```
 
 ### Start up a read only server
