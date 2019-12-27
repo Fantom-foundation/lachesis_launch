@@ -197,6 +197,6 @@ Deploy new genesis and start
 
 ```
 wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/mainnet.toml
-./lachesis --config config.toml --nousb --validator 0x --unlock 0x --password /path/to/password
+./lachesis --config mainnet.toml --nousb --validator 0x --unlock 0x --password /path/to/password
 ```
 
