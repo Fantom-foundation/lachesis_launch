@@ -190,13 +190,13 @@ Build output is found in ./build
 Switch to build directory and remove previous genesis
 
 ```
-rm $HOME/go/src/github.com/Fantom-foundation/go-lachesis/build/config.toml
+rm $HOME/go/src/github.com/Fantom-foundation/go-lachesis/build/*.toml
 rm -r $HOME/.lachesis/*-ldb
 ```
 Deploy new genesis and start
 
 ```
-wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/config.toml
+wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/mainnet.toml
 ./lachesis --config config.toml --nousb --validator 0x --unlock 0x --password /path/to/password
 ```
 
