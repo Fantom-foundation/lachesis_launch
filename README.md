@@ -156,7 +156,7 @@ Create an unlock file for the account password
 Start the node
 
 ```
-./lachesis --config config.toml --nousb --coinbase 0x --unlock 0x --password /path/to/password
+./lachesis --config config.toml --nousb --validator 0x --unlock 0x --password /path/to/password
 ```
 ### Troubleshooting
 
@@ -200,6 +200,6 @@ Deploy new genesis and start
 
 ```
 wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/config.toml
-./lachesis --config config.toml --nousb --coinbase 0x --unlock 0x --password /path/to/password
+./lachesis --config config.toml --nousb --validator 0x --unlock 0x --password /path/to/password
 ```
 
