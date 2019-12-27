@@ -84,7 +84,7 @@ wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/
 Start your node
 
 ```
-./lachesis --config config.toml --nousb
+./lachesis --config mainnet.toml --nousb
 ```
 
 ### Creating a new account
