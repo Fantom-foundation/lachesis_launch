@@ -83,8 +83,7 @@ cd $HOME/go/src/github.com/Fantom-foundation/
 git clone https://github.com/Fantom-foundation/fantom-sfc.git
 cd fantom-sfc/
 mkdir build
-cd build
-solc -o $PWD --optimize --optimize-runs=2000 --ast --asm --abi --bin-runtime --overwrite $PWD/../contracts/sfc/Staker.sol
+solc -o $PWD/build --optimize --optimize-runs=2000 --ast --asm --abi --bin-runtime --allow-paths $PWD/contracts --overwrite $PWD/contracts/sfc/Staker.sol
 ```
 
 This will generate the contract artifacts in $HOME/go/src/github.com/Fantom-foundation/fantom-sfc/build
@@ -135,8 +134,8 @@ Path of the secret key file:
 ```
 ### Adding funds to an account
 
-- [Prenet] Contact the Opera validator group to receive funds
 - [Mainnet] Use the bridge to transfer from bep2, erc20, xar to opera
+- [Prenet] Contact the Opera validator group to receive funds
 
 ### Transfering funds via the console
 
@@ -145,7 +144,7 @@ Path of the secret key file:
 ```
 
 ```
-var tx = {from: "0x", to: "0x", value: web3.toWei(4000000, "ether")}
+var tx = {from: "0x", to: "0x", value: web3.toWei(4000000, "ftm")}
 personal.sendTransaction(tx, "password")
 ```
 
@@ -175,7 +174,7 @@ personal.unlockAccount(YOUR_ADDRESS, "password", 60) // make sure account is unl
 tx = sfc.createStake([], {from:YOUR_ADDRESS, value: "3175000000000000000000000"}) // 3175000.0 FTM
 
 // Sanity checks
-ftm.getTransactionReceipt(tx) // check tx is confirmed. If it doesn't get confirmed, ensure blocks are created and your validators setup.
+ftm.getTransactionReceipt(tx) // check tx is confirmed
 
 sfc.getStakerID(YOUR_ADDRESS)
 
@@ -193,8 +192,8 @@ Start the node
 ./lachesis --config config.toml --nousb --validator 0x --unlock 0x --password /path/to/password
 ```
 
-### Start up a read only server
+### Start up a public API server
 
 ```
-./lachesis --config config.toml --nousb --rpc --rpcaddr=0.0.0.0 --rpcport=3001 --rpcvhosts=* --rpccorsdomain=* --rpcapi=eth,debug,admin,web3,personal,net,txpool,ftm,sfc --ws --wsaddr=0.0.0.0 --wsport=3500 --wsorigins=* --wsapi=eth,debug,admin,web3,personal,net,txpool,ftm,sfc --verbosity 4
+./lachesis --config mainnet.toml --nousb --rpc --rpcaddr=0.0.0.0 --rpcport=3001 --rpcvhosts=* --rpccorsdomain=* --ws --wsaddr=0.0.0.0 --wsport=3500 --wsorigins=* --verbosity 3
 ```

@@ -83,8 +83,7 @@ cd $HOME/go/src/github.com/Fantom-foundation/
 git clone https://github.com/Fantom-foundation/fantom-sfc.git
 cd fantom-sfc/
 mkdir build
-cd build
-solc -o $PWD --optimize --optimize-runs=2000 --ast --asm --abi --bin-runtime --overwrite $PWD/../contracts/sfc/Staker.sol
+solc -o $PWD/build --optimize --optimize-runs=2000 --abi --bin-runtime --allow-paths $PWD/contracts --overwrite $PWD/contracts/sfc/Staker.sol
 ```
 
 This will generate the contract artifacts in $HOME/go/src/github.com/Fantom-foundation/fantom-sfc/build
@@ -134,15 +133,15 @@ Nonce = 0
 
 The SFC should start with a minimum of 2 validators, so create 2 accounts (on two separate nodes)
 
-Add the two created accounts addresses to [Lachesis.Net.Genesis.Alloc.GValidators.#]
+Add the two created accounts addresses to [Lachesis.Net.Genesis.Alloc.Validators.#]
 
 ```
-[Lachesis.Net.Genesis.Alloc.GValidators.1]
+[Lachesis.Net.Genesis.Alloc.Validators.1]
 ID = 1
 Address = "0x7f9d1dbaf84d827b0840e38f555a490969978d20"
 Stake = 10000000
 
-[Lachesis.Net.Genesis.Alloc.GValidators.2]
+[Lachesis.Net.Genesis.Alloc.Validators.2]
 ID = 2
 Address = "0xfd09f0296af88ac777c137ecd92d85583a9b9e4a"
 Stake = 10000000
@@ -211,7 +210,7 @@ personal.unlockAccount(YOUR_ADDRESS, "password", 60) // make sure account is unl
 tx = sfc.createStake([], {from:YOUR_ADDRESS, value: "3175000000000000000000000"}) // 3175000.0 FTM
 
 // Sanity checks
-ftm.getTransactionReceipt(tx) // check tx is confirmed. If it doesn't get confirmed, ensure blocks are created and your validators setup.
+ftm.getTransactionReceipt(tx) // check tx is confirmed
 
 sfc.stakerIDs(YOUR_ADDRESS) // when tx gets confirmed, should be non-zero
 ```

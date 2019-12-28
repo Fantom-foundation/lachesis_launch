@@ -135,13 +135,13 @@ sfc.stakers(1) // if everything is allright, will return non-zero values
 
 
 // Create staker
-YOUR_ADDRESS = "0xfE19B9Ae8b056eE11d20A8F530326a2C3b99ADca"
+YOUR_ADDRESS = "0xa123456789123456789123456789012345678901"
 sfc.getStakerID(YOUR_ADDRESS)
 personal.unlockAccount(YOUR_ADDRESS, "password", 60) // make sure account is unlocked
 tx = sfc.createStake([], {from:YOUR_ADDRESS, value: "3175000000000000000000000"}) // 3175000.0 FTM
 
 // Sanity checks
-ftm.getTransactionReceipt(tx) // check tx is confirmed. If it doesn't get confirmed, ensure blocks are created and your validators setup.
+ftm.getTransactionReceipt(tx) // check tx is confirmed
 
 sfc.getStakerID(YOUR_ADDRESS)
 
@@ -223,7 +223,7 @@ First check balance to ensure that balance is greater than required balance;
 ftm.getBalance("0x")
 ```
 
-Default gas limit is 21000 and gas price is 1000000000, so minimum funds should be > 2100000000000
+Minimum gas limit is 21000 and gas price is 1000000000, so minimum funds should be > 2100000000000
 
 If sufficient Balance, the local DB and state have not yet synced. Stop and restart your ./lachesis node and retry
 
