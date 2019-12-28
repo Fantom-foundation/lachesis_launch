@@ -74,7 +74,7 @@ COMMANDS:
 The Special Fee Contract (SFC) handles the creation of validators and manages the staking logic internally.
 
 ```
-snap install solc
+sudo snap install solc
 export export PATH=/snap/bin:$PATH
 ```
 

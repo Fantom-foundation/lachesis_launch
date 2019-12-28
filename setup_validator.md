@@ -74,7 +74,7 @@ COMMANDS:
 The Special Fee Contract (SFC) handles the creation of validators and manages the staking logic internally.
 
 ```
-snap install solc
+sudo snap install solc
 export export PATH=/snap/bin:$PATH
 ```
 
@@ -84,7 +84,7 @@ git clone https://github.com/Fantom-foundation/fantom-sfc.git
 cd fantom-sfc/
 mkdir build
 cd build
-solc -o $PWD --optimize --optimize-runs=2000 --ast --asm --abi --bin-runtime --overwrite $PWD/../contracts/Staker.sol
+solc -o $PWD --optimize --optimize-runs=2000 --ast --asm --abi --bin-runtime --overwrite $PWD/../contracts/sfc/Staker.sol
 ```
 
 This will generate the contract artifacts in $HOME/go/src/github.com/Fantom-foundation/fantom-sfc/build
