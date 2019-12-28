@@ -6,10 +6,10 @@
 [Adding funds to an account](#adding-funds-to-an-account)  
 [Create a validator on the SFC](#create-a-validator-on-the-sfc)  
 [Startup as a validator](#startup-as-a-validator)  
+[Run validator as pm2 process](#run-validator-as-pm2-process)  
 [Troubleshooting](#troubleshooting)  
 [Error: insufficient funds for gas * price + value](#error-insufficient-funds-for-gas--price--value)  
 [Upgrading lachesis](#upgrading-lachesis)  
-
 
 
 ### Installing build tools
@@ -158,6 +158,61 @@ Start the node
 ```
 ./lachesis --config mainnet.toml --nousb --validator 0x --unlock 0x --password /path/to/password
 ```
+
+### Run validator as pm2 process
+
+Install nodejs, npm and pm2
+
+```
+sudo apt-get install nodejs npm
+sudo npm i -g pm2
+```
+
+Create a script to run the node
+
+```
+touch runNode.sh
+chmod +x runNode.sh
+```
+
+and put in the following content
+
+```
+#!/bin/sh
+$HOME/go/src/github.com/Fantom-foundation/go-lachesis/build/lachesis --config $HOME/go/src/github.com/Fantom-foundation/go-lachesis/build/mainnet.toml --nousb --validator 0x --unlock 0x --password /path/to/password
+```
+
+Create the pm2 config file
+
+```
+touch ecosystem.config.js
+```
+
+and put in the following content
+
+```
+module.exports = { apps : [ { name: "fantom", script: "$HOME/runNode.sh", exec_mode: "fork", exec_interpreter: "bash"} ] }
+```
+
+Start the pm2 process
+
+```
+pm2 start ./ecosystem.config.js
+```
+
+Use following commands
+
+```
+// Check node status
+pm2 status
+
+// Check node logs
+pm2 logs
+
+// Create an autostart script to automatically run the node on server startup
+pm2 save
+```
+
 ### Troubleshooting
 
 #### Error: insufficient funds for gas * price + value
