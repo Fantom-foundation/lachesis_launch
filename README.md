@@ -74,7 +74,7 @@ COMMANDS:
 
 ### Joining the mainnet
 
-Download the default genesis config.toml
+Download the default genesis mainnet.toml
 
 ```
 cd $HOME/go/src/github.com/Fantom-foundation/go-lachesis/build/
@@ -101,7 +101,7 @@ Follow the prompts and supply the password, you will receive output;
 Your new key was generated
 
 Public address of the key:   0x
-Path of the secret key file: 
+Path of the secret key file:
 
 - You can share your public address with anyone. Others need it to interact with you.
 - You must NEVER share the secret key with anyone! The key controls access to your funds!
@@ -156,7 +156,7 @@ Create an unlock file for the account password
 Start the node
 
 ```
-./lachesis --config config.toml --nousb --validator 0x --unlock 0x --password /path/to/password
+./lachesis --config mainnet.toml --nousb --validator 0x --unlock 0x --password /path/to/password
 ```
 ### Troubleshooting
 
@@ -199,4 +199,3 @@ Deploy new genesis and start
 wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/mainnet.toml
 ./lachesis --config mainnet.toml --nousb --validator 0x --unlock 0x --password /path/to/password
 ```
-
