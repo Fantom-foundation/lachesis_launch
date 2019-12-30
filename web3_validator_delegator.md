@@ -29,6 +29,8 @@ Delegate a certain number of FTM to a staker. Note that you can only delegate to
 
 If you already have a delegation, then you have to eigher create a new address or withdraw previous delegation.
 
+Delegation is applied in next epoch. First reward will be received after 2 epochs, if staker was in validators group.
+
 `amount` is set in Wei. Minimum delegation is 1000000000000000000 Wei (1 FTM).
 
 ```
@@ -45,19 +47,23 @@ tx = sfc.createDelegation(<stakerID>, {from: YOUR_ADDRESS, value: "<amount>"})
 - This address isn't a staker
 - `Total amount of delegations to staker` is less or equal to `15.0` * `staker's stake amount`.
 
+### Increase delegation stake
+
+Currently it's not possible to increase delegation stake. Delegator may create a new address to create a new delegation.
+
 ### Claim Delegation Rewards
 
 Claim rewards earned from delegating your stake.
 
-- `from_epoch` is starting epoch from which rewards are claimed. If 0, then last claimed epoch + 1. If not sure, always use 0.
-- `max_epochs` is maximum number of epochs to claim rewards for. If not sure, use 40.
+- `from_epoch` is starting epoch from which rewards are claimed. If 0, then `last claimed epoch + 1`. If specified epoch higher than `last claimed epoch + 1`, then rewards lower `from_epoch` aren't claimable anymore. If not sure, always use 0!
+- `max_epochs` is maximum number of epochs to claim rewards for (in one call). If you have rewards for many epochs, call method multiple times until all rewards are claimed. If not sure, use 40.
 
 ```
 // check you have rewards:
-sfc.calcDelegationRewards(YOUR_ADDRESS, from_epoch, max_epochs) // returns: rewards amount, first claimed epoch, last claimed epoch
+sfc.calcDelegationRewards(YOUR_ADDRESS, 0, max_epochs) // returns: rewards amount, first claimed epoch, last claimed epoch
 // claim rewards:
 personal.unlockAccount(YOUR_ADDRESS, <password>, 60) // unlock account for 60 second
-tx = sfc.claimDelegationRewards(from_epoch, max_epochs, {from: YOUR_ADDRESS}) // call multiple times if there's more epochs than max_epochs
+tx = sfc.claimDelegationRewards(0, max_epochs, {from: YOUR_ADDRESS}) // call multiple times if there's more rewards than max_epochs
 ```
 
 #### Checks
@@ -66,12 +72,15 @@ tx = sfc.claimDelegationRewards(from_epoch, max_epochs, {from: YOUR_ADDRESS}) //
 - Claimed at least one epoch
 - Not claimed the same epoch twice
 - Starting epoch isn't in future
+- Rewards are unlocked: passed sfc.unbondingUnlockPeriod() seconds since it's true that sfc.bondedRatio() >= sfc.bondedTargetRewardUnlock()
 
 ### Request to withdraw delegated stake
 
 Put in a request to withdraw delegated stake. After a number of seconds and epochs have passed since calling the function below, you will be able to call withdrawDelegation() successfully.
 
 After calling this function, you won't be able to claim rewards anymore. Claim all the rewards before calling this function.
+
+The validator's stake will be decreased in next epoch by amount of delegation.
 
 ```
 personal.unlockAccount(YOUR_ADDRESS, <password>, 60) // unlock account for 60 second
@@ -82,13 +91,13 @@ tx = sfc.prepareToWithdrawDelegation({from: YOUR_ADDRESS})
 - Delegator must exist
 - Delegator isn't deactivated (i.e. didn't prepare to withdraw)
 
-###  Withdraw delegated stake
+### Withdraw delegated stake
 
-Withdraw delegated stake. Erases delegation object and returns delegated stake.
+Withdraw delegated stake. Erases delegation object and withdraws delegated stake.
 
 Note that a number of seconds and epochs must elaspe since `prepareToWithdrawDelegation` call.
 
-If staker is cheater (i.e. doublesigned), then delegation will be erased, but delegated stake won't be withdrawn (i.e. will be slashed).
+If staker is a cheater (i.e. doublesigned in DAG), then delegation will be erased, but delegated stake won't be withdrawn (i.e. will be slashed).
 
 ```
 personal.unlockAccount(YOUR_ADDRESS, <password>, 60) // unlock account for 60 second
@@ -139,27 +148,32 @@ tx = sfc.increaseStake({from:YOUR_ADDRESS, value: "<amount>"})
 
 Claim rewards earned from being a validator.
 
-- `from_epoch` is starting epoch from which rewards are claimed. If 0, then last claimed epoch + 1. If not sure, always use 0.
-- `max_epochs` is maximum number of epochs to claim rewards for. If not sure, use 40.
+- `from_epoch` is starting epoch from which rewards are claimed. If 0, then `last claimed epoch + 1`. If specified epoch higher than `last claimed epoch + 1`, then rewards lower `from_epoch` aren't claimable anymore. If not sure, always use 0!
+- `max_epochs` is maximum number of epochs to claim rewards for (in one call). If you have rewards for many epochs, call method multiple times until all rewards are claimed. If not sure, use 40.
 
 ```
 YOUR_ID = sfc.getStakerID(YOUR_ADDRESS) // if 0, then staker doesn't exist, or SFC functions aren't initialized correctly
 // check you have rewards:
-sfc.calcValidatorRewards(YOUR_ID, from_epoch, max_epochs) // returns: rewards amount, first claimed epoch, last claimed epoch
+sfc.calcValidatorRewards(YOUR_ID, 0, max_epochs) // returns: rewards amount, first claimed epoch, last claimed epoch
 // claim rewards:
 personal.unlockAccount(YOUR_ADDRESS, <password>, 60) // unlock account for 60 second
-tx = sfc.claimValidatorRewards(from_epoch, max_epochs, {from: YOUR_ADDRESS}) // call multiple times if there's more epochs than max_epochs
+tx = sfc.claimValidatorRewards(0, max_epochs, {from: YOUR_ADDRESS}) // call multiple times if there's more rewards than max_epochs
 ```
 
 #### Checks
 - Staker must exist
 - Claimed at least one epoch
-- Not claimed the same epoch twice
+- `First epoch to claim` > `last claimed epoch`
 - Starting epoch isn't in future
+- Rewards are unlocked: passed sfc.unbondingUnlockPeriod() seconds since it's true that sfc.bondedRatio() >= sfc.bondedTargetRewardUnlock()
 
 ### Request to withdraw stake
 
-Put in a request to withdraw stake, can then call withdrawStake() function after enough seconds and epochs have passed
+Put in a request to withdraw stake, can then call withdrawStake() function after enough seconds and epochs have passed.
+
+After calling this function, validators won't be a validator in next epoch.
+
+This call doesn't affect already earned rewards by delegators and staker.
 
 ```
 personal.unlockAccount(YOUR_ADDRESS, "password", 60) // unlock account for 60 second
@@ -175,6 +189,10 @@ tx = sfc.prepareToWithdrawStake({from: YOUR_ADDRESS})
 After enough seconds and epochs have passed since calling PreparedToWithdrawStake(), you can call this function successfully.
 
 After calling this function, you won't be able to claim rewards anymore. Claim all the rewards before calling this function.
+
+This call doesn't affect already earned rewards by delegators.
+
+If staker is a cheater (i.e. doublesigned in DAG), then staker will be erased, but delegated stake won't be withdrawn (i.e. will be slashed).
 
 ```
 personal.unlockAccount(YOUR_ADDRESS, "password", 60) // unlock account for 60 second
