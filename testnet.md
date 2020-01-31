@@ -9,15 +9,32 @@
 [Run validator as pm2 process](#run-validator-as-pm2-process)  
 [Troubleshooting](#troubleshooting)  
 [Error: insufficient funds for gas * price + value](#error-insufficient-funds-for-gas--price--value)  
-[Upgrading lachesis](#upgrading-lachesis)  
-
+[Upgrading lachesis](#upgrading-lachesis)
 
 ### Overview
 
-This guide is for connecting to the Opera mainnet only.
+This guide is for connecting to the Opera testnet only.
 
-Latest commit hash is [8c9bb073bbac24b2d8678b203cbaefe21c97303a](https://github.com/Fantom-foundation/go-lachesis/commit/8c9bb073bbac24b2d8678b203cbaefe21c97303a).
+The testnet consists of 3 nodes:
 
+```
+enode://a781d2155cd12bbb8d5867f90430c54f4a6cc0d8ebc7f1378c3f883ed109b114063b28c279cb3f25ad8eb39756bcfb16a930e45dae50266e245cde5eb9ad731b@3.213.142.230:7946
+
+enode://7858538725a9c4e51510ab728e85ea0e28a2c9f5c2bd5bd4c86a0d0352f805a3829e4840719c506c37599e92df3eaccdc7dbf1da5c6e84f31151a83bdaf08cd6@3.227.34.226:7946
+
+enode://4b0f93e6a3b889810f892b0b60287bae9e980c3cd378fd872dc166cff91507d2c293b60319806a2f017374846e51a7ff33631e72cab46c4cf173dba0d75203aa@52.72.222.228:7946
+```
+
+Latest commit hash is [931bbf2fa188f9bf0f175acb007d4513a341d5bb](https://github.com/Fantom-foundation/go-lachesis/commit/931bbf2fa188f9bf0f175acb007d4513a341d5bb).
+
+
+Explorer Api Server:[3.213.142.230:6000](http://3.213.142.230:6000)
+
+Explorer SocketIo Server [3.213.142.230:6001](http://3.213.142.230:6001)
+
+Api Documentation is available [here](https://app.swaggerhub.com/apis/devintegral7/fantom-explorer_api/0.1#/info).
+
+- Please replace http://3.136.216.35:3100 with http://3.213.142.230:6000 as the api endpoint.
 
 ### Installing build tools
 
@@ -79,19 +96,19 @@ COMMANDS:
    help                               Shows a list of commands or help for one command
 ```
 
-### Joining the public mainnet
+### Joining the public testnet
 
-Download the default genesis config `mainnet.toml`:
+Download the default genesis config `testnet.toml`:
 
 ```
 cd $HOME/go/src/github.com/Fantom-foundation/go-lachesis/build/
-wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/mainnet.toml
+wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/testnet.toml
 ```
 
 Start your node
 
 ```
-./lachesis --config mainnet.toml --nousb
+./lachesis --config testnet.toml --nousb
 ```
 
 ### Creating a new account
@@ -120,8 +137,8 @@ Path of the secret key file:
 
 ### Adding funds to an account
 
-- [Prenet] Contact the Opera validator group to receive funds
-- [Mainnet] Use the bridge to transfer from bep2, erc20, xar to opera
+- Email [contact@fantom.foundation](mailto:contact@fantom.foundation)
+
 
 ### Create a validator on the SFC
 
@@ -142,7 +159,7 @@ sfc.stakers(1) // if everything is allright, will return non-zero values
 
 
 // Create staker
-YOUR_ADDRESS = "0xfE19B9Ae8b056eE11d20A8F530326a2C3b99ADca"
+YOUR_ADDRESS = <Your Address>
 sfc.getStakerID(YOUR_ADDRESS)
 personal.unlockAccount(YOUR_ADDRESS, "password", 60) // make sure account is unlocked
 tx = sfc.createStake([], {from:YOUR_ADDRESS, value: "3175000000000000000000000"}) // 3175000.0 FTM
@@ -163,7 +180,7 @@ Create an unlock file for the account password
 Start the node
 
 ```
-./lachesis --config mainnet.toml --nousb --validator 0x --unlock 0x --password /path/to/password
+./lachesis --config testnet.toml --nousb --validator 0x --unlock 0x --password /path/to/password
 ```
 
 ### Run validator as pm2 process
@@ -186,7 +203,7 @@ and put in the following content
 
 ```
 #!/bin/sh
-$HOME/go/src/github.com/Fantom-foundation/go-lachesis/build/lachesis --config $HOME/go/src/github.com/Fantom-foundation/go-lachesis/build/mainnet.toml --nousb --validator 0x --unlock 0x --password /path/to/password
+$HOME/go/src/github.com/Fantom-foundation/go-lachesis/build/lachesis --config $HOME/go/src/github.com/Fantom-foundation/go-lachesis/build/testnet.toml --nousb --validator 0x --unlock 0x --password /path/to/password
 ```
 
 Create the pm2 config file
@@ -258,6 +275,6 @@ rm -r $HOME/.lachesis/*-ldb
 Deploy new genesis and start
 
 ```
-wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/mainnet.toml
-./lachesis --config mainnet.toml --nousb --validator 0x --unlock 0x --password /path/to/password
+wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/testnet.toml
+./lachesis --config testnet.toml --nousb --validator 0x --unlock 0x --password /path/to/password
 ```
