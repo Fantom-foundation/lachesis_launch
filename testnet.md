@@ -85,7 +85,7 @@ Confirm your go-lachesis version
 ./build/lachesis help
 
 VERSION:
-   0.3.0-dev
+   0.5.0-rc.1
 COMMANDS:
    account                            Manage accounts
    attach                             Start an interactive JavaScript environment (connect to node)
