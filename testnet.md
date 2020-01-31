@@ -25,12 +25,12 @@ enode://7858538725a9c4e51510ab728e85ea0e28a2c9f5c2bd5bd4c86a0d0352f805a3829e4840
 enode://4b0f93e6a3b889810f892b0b60287bae9e980c3cd378fd872dc166cff91507d2c293b60319806a2f017374846e51a7ff33631e72cab46c4cf173dba0d75203aa@52.72.222.228:7946
 ```
 
-Latest commit hash is [931bbf2fa188f9bf0f175acb007d4513a341d5bb](https://github.com/Fantom-foundation/go-lachesis/commit/931bbf2fa188f9bf0f175acb007d4513a341d5bb).
+Latest commit hash is [931bbf2fa188f9bf0f175acb007d4513a341d5bb](https://github.com/Fantom-foundation/go-lachesis/commit/931bbf2fa188f9bf0f175acb007d4513a341d5bb)
 
 
 Explorer Api Server:[3.213.142.230:6000](http://3.213.142.230:6000)
 
-Explorer SocketIo Server [3.213.142.230:6001](http://3.213.142.230:6001)
+Explorer SocketIo Server: [3.213.142.230:6001](http://3.213.142.230:6001)
 
 Api Documentation is available [here](https://app.swaggerhub.com/apis/devintegral7/fantom-explorer_api/0.1#/info).
 

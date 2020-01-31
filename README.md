@@ -16,7 +16,16 @@
 
 This guide is for connecting to the Opera mainnet only.
 
-Latest commit hash is [8c9bb073bbac24b2d8678b203cbaefe21c97303a](https://github.com/Fantom-foundation/go-lachesis/commit/8c9bb073bbac24b2d8678b203cbaefe21c97303a).
+Latest commit hash is [8c9bb073bbac24b2d8678b203cbaefe21c97303a](https://github.com/Fantom-foundation/go-lachesis/commit/8c9bb073bbac24b2d8678b203cbaefe21c97303a)
+
+Explorer Api Server:[https://api.fantom.network](https://api.fantom.network)
+
+Explorer SocketIo Server: [https://ws.fantom.network/](https://ws.fantom.network/)
+
+Api Documentation is available [here](https://app.swaggerhub.com/apis/devintegral7/fantom-explorer_api/0.1#/info).
+
+- Please replace http://3.136.216.35:3100 with https://api.fantom.network as the api endpoint.
+
 
 
 ### Installing build tools
