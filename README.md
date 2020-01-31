@@ -1,7 +1,7 @@
 [Install golang](#install-golang)  
 [Installing build tools](#installing-build-tools)  
 [Installing go-lachesis](#installing-go-lachesis)  
-[Joining the mainnet](#joining-the-mainnet)  
+[Joining the public net](#joining-the-publicnet)
 [Creating a new account](#creating-a-new-account)  
 [Adding funds to an account](#adding-funds-to-an-account)  
 [Create a validator on the SFC](#create-a-validator-on-the-sfc)  
@@ -72,9 +72,9 @@ COMMANDS:
    help                               Shows a list of commands or help for one command
 ```
 
-### Joining the mainnet
+### Joining the public net (mainnet or testnet)
 
-Download the default genesis mainnet.toml
+Download the default genesis config (mainnet.toml or testnet.toml):
 
 ```
 cd $HOME/go/src/github.com/Fantom-foundation/go-lachesis/build/

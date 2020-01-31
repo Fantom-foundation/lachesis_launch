@@ -4,8 +4,7 @@
 [Installing the Special Fee Contract](#installing-the-special-fee-contract)  
 [Creating a validator](#create-a-validator-on-the-sfc)  
 [Setup mainnet genesis](#setup-mainnet-genesis)  
-Joining the mainnet  
-Transferring tokens from ERC20 or BEP2 to mainnet  
+[Create a validator on the SFC](#create-a-validator-on-the-sfc)
 
 
 
