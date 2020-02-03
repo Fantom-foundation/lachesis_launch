@@ -25,7 +25,9 @@ enode://7858538725a9c4e51510ab728e85ea0e28a2c9f5c2bd5bd4c86a0d0352f805a3829e4840
 enode://4b0f93e6a3b889810f892b0b60287bae9e980c3cd378fd872dc166cff91507d2c293b60319806a2f017374846e51a7ff33631e72cab46c4cf173dba0d75203aa@52.72.222.228:7946
 ```
 
-Latest commit hash is [931bbf2fa188f9bf0f175acb007d4513a341d5bb](https://github.com/Fantom-foundation/go-lachesis/commit/931bbf2fa188f9bf0f175acb007d4513a341d5bb)
+Latest go-lachesis `develop` branch commit hash is [30507a4724ad714942541d7a07eec41e6bb4fa7c](https://github.com/Fantom-foundation/go-lachesis/commit/30507a4724ad714942541d7a07eec41e6bb4fa7c)
+
+Latest sfc commit hash is [463d8b85a74895917d91ab3c25d7b027604c8b32](https://github.com/Fantom-foundation/fantom-sfc/commit/463d8b85a74895917d91ab3c25d7b027604c8b32)
 
 
 Explorer Api Server:[3.213.142.230:6000](http://3.213.142.230:6000)
@@ -69,11 +71,9 @@ export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 ```
 
-### Installing go-lachesis
+### Installing testnet go-lachesis
 
 ```
-mkdir -p $HOME/go/src/github.com/Fantom-foundation
-cd $HOME/go/src/github.com/Fantom-foundation/
 git clone https://github.com/Fantom-foundation/go-lachesis.git
 cd go-lachesis/
 make build
@@ -85,7 +85,7 @@ Confirm your go-lachesis version
 ./build/lachesis help
 
 VERSION:
-   0.5.0-rc.1
+   0.5.0-stable
 COMMANDS:
    account                            Manage accounts
    attach                             Start an interactive JavaScript environment (connect to node)
@@ -96,27 +96,29 @@ COMMANDS:
    help                               Shows a list of commands or help for one command
 ```
 
-### Joining the public testnet
-
-Download the default genesis config `testnet.toml`:
+### Starting your node and joining the public testnet
 
 ```
-cd $HOME/go/src/github.com/Fantom-foundation/go-lachesis/build/
+cd build
+
 wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/testnet.toml
-```
 
-Start your node
+./lachesis --testnet --nousb
 
-```
-./lachesis --config testnet.toml --nousb
-```
+This way, it'll automatically assign datadir to `~/.lachesis/testnet`, so it'll not overlap with `mainnet.toml`.
+
+Or you may choose it explicitly:
+
+`./lachesis --testnet --config testnet.toml --nousb --datadir ~/.lachesis/testnet`
+
+It should connect automatically using bootnodes, with no extra steps.
 
 ### Creating a new account
 
 First we need to setup a new account to receive funds in;
 
 ```
-./lachesis account new
+./lachesis account new <YOUR IPC ENDPOINT>
 ```
 
 Follow the prompts and supply the password, you will receive output;
@@ -145,7 +147,7 @@ Path of the secret key file:
 Attach to your running node
 
 ```
-./lachesis attach
+./lachesis attach <YOUR IPC ENDPOINT>
 ```
 
 ```
@@ -250,31 +252,3 @@ ftm.getBalance("0x")
 Default gas limit is 21000 and gas price is 1000000000, so minimum funds should be > 2100000000000
 
 If sufficient Balance, the local DB and state have not yet synced. Stop and restart your ./lachesis node and retry
-
-### Upgrading lachesis
-
-Switch to lachesis working directory
-
-```
-cd $HOME/go/src/github.com/Fantom-foundation/go-lachesis
-```
-Update and build latest version
-
-```
-git pull origin master
-make build
-```
-
-Build output is found in ./build
-Switch to build directory and remove previous genesis
-
-```
-rm $HOME/go/src/github.com/Fantom-foundation/go-lachesis/build/*.toml
-rm -r $HOME/.lachesis/*-ldb
-```
-Deploy new genesis and start
-
-```
-wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/testnet.toml
-./lachesis --config testnet.toml --nousb --validator 0x --unlock 0x --password /path/to/password
-```
