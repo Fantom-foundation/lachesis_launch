@@ -157,16 +157,19 @@ MinStartupGas = 560000
 
 [Lachesis.Emitter]
 Validator = "0x0000000000000000000000000000000000000000"
-MinEmitInterval = 300000000
-MaxEmitInterval = 600000000000
 MaxGasRateGrowthFactor = 3e+00
 MaxTxsFromSender = 8
-SelfForkProtectionInterval = 180000000000
 EpochTailLength = 1
 MaxParents = 7
 SmoothTpsThreshold = 24500000
 NoTxsThreshold = 840000
 EmergencyThreshold = 140000
+
+[Lachesis.Emitter.EmitIntervals]
+Min = 300000000
+Max = 600000000000
+Confirming = 200000000
+SelfForkProtection = 180000000000
 
 [Lachesis.TxPool]
 Locals = []
