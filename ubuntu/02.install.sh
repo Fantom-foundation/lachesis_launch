@@ -15,6 +15,7 @@ for i in `seq 0 $N`; do
     fi
 done
 
+
 # make network config
 go run ../../cmd/lachesis --testnet --port 7946 --nodiscover --v5disc dumpconfig > network.toml
 for i in `seq 0 $N`; do
@@ -46,10 +47,11 @@ Alias=lachesis.service
 CFG
 done
 
+
 # copy files to servers
 for i in `seq 0 $N`; do
     scp -r ./node$i ${NAME}$i:/tmp/lachesis
-    scp -r ./lachesis ${NAME}$i:/tmp/lachesis/
+    scp ./lachesis ${NAME}$i:/tmp/lachesis/
 done
 
 

@@ -4,6 +4,7 @@ cd $(dirname $0)
 set -e
 
 N=$((NODES-1))
+cd ${SRC}
 
 # compile cmd/lachesis
 make build
