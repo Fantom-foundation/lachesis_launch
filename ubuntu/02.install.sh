@@ -37,7 +37,7 @@ Type=simple
 User=lachesis
 Group=lachesis
 WorkingDirectory=/home/lachesis
-ExecStart=/home/lachesis/lachesis --config ./network.toml --datadir=. --nousb --password ./validator.pswd --unlock ${ACC} --validator ${ACC} --nat="extip:${IP}"
+ExecStart=/home/lachesis/lachesis --config ./network.toml --datadir=. --nousb --password ./validator.pswd --allow-insecure-unlock --unlock ${ACC} --validator ${ACC} --nat="extip:${IP}"a --rpc
 OOMScoreAdjust=-900
 
 [Install]
