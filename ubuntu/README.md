@@ -20,3 +20,12 @@ some practice to deploy public network validators on ubuntu servers
 4. [02.install.sh](./02.install.sh) nodes as systemd service.
 5. See [03.status.sh](./03.status.sh) of nodes.
 
+
+### Work hints
+
+ - attach to console without port: `sudo /home/lachesis/lachesis attach --exec "admin.nodeInfo.enode" /home/lachesis/lachesis.ipc`;
+ - use `--allow-insecure-unlock` arg to avoid `Account unlock with HTTP access is forbidden!` error;
+ - update systemd after args changing: `sudo vi /home/lachesis/lachesis-node.service && sudo systemctl daemon-reload`;
+ - restart node: `sudo systemctl restart lachesis-node`;
+ - node status: `sudo systemctl status lachesis-node`;
+ - real-time logs: `journalctl -n 100 -f -u lachesis-node`;
