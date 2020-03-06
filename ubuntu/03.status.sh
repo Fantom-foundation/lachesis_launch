@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 cd $(dirname $0)
 . ./00.params.sh
-set -e
+
 
 N=$((NODES-1))
 
