@@ -1,7 +1,7 @@
 [Install golang](#install-golang)  
 [Installing build tools](#installing-build-tools)  
 [Installing go-lachesis](#installing-go-lachesis)  
-[Joining the public net](#joining-the-publicnet)
+[Joining the public net](#joining-the-public-mainnet)  
 [Creating a new account](#creating-a-new-account)  
 [Adding funds to an account](#adding-funds-to-an-account)  
 [Create a validator on the SFC](#create-a-validator-on-the-sfc)  
@@ -15,8 +15,6 @@
 ### Overview
 
 This guide is for connecting to the Opera mainnet only.
-
-Latest commit hash is [8c9bb073bbac24b2d8678b203cbaefe21c97303a](https://github.com/Fantom-foundation/go-lachesis/commit/8c9bb073bbac24b2d8678b203cbaefe21c97303a)
 
 Explorer Api Server:[https://api.fantom.network](https://api.fantom.network)
 
@@ -77,7 +75,7 @@ Confirm your go-lachesis version
 ./build/lachesis help
 
 VERSION:
-   0.5.0-rc.1
+   0.6.0-rc.2
 COMMANDS:
    account                            Manage accounts
    attach                             Start an interactive JavaScript environment (connect to node)

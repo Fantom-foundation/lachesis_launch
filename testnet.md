@@ -1,7 +1,7 @@
 [Install golang](#install-golang)  
 [Installing build tools](#installing-build-tools)  
 [Installing go-lachesis](#installing-go-lachesis)  
-[Joining the public net](#joining-the-publicnet)
+[Joining the public net](#joining-the-public-net)  
 [Creating a new account](#creating-a-new-account)  
 [Adding funds to an account](#adding-funds-to-an-account)  
 [Create a validator on the SFC](#create-a-validator-on-the-sfc)  
@@ -83,7 +83,7 @@ Confirm your go-lachesis version
 ./build/lachesis help
 
 VERSION:
-  0.5.0-rc.1
+  0.6.0-rc.2
 COMMANDS:
    account                            Manage accounts
    attach                             Start an interactive JavaScript environment (connect to node)
