@@ -17,8 +17,9 @@ some practice to deploy public network validators on ubuntu servers
 1. Edit [00.params.sh](./00.params.sh) for actual values.
 2. Run [01.keygen.sh](./01.keygen.sh) to generate keys for validators and SFC-admin.
 3. Update `lachesis/genesis/genesis.go:TestGenesis()` source to get your custom genesis with generated keys.
-4. [02.install.sh](./02.install.sh) nodes as systemd service.
-5. See [03.status.sh](./03.status.sh) of nodes.
+4. Run [02.network-config.sh](./02.network-config.sh) to make configs.
+5. [03.install.sh](./03.install.sh) nodes as systemd service.
+6. See [04.status.sh](./04.status.sh) of nodes.
 
 
 ### Work hints
