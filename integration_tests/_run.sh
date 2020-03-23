@@ -3,6 +3,7 @@ cd $(dirname $0)
 set -e
 
 ( echo START
+  ./01.copy_sfc.sh &&
  ./10.reset-all.sh &&
  ./11.test-sync.sh &&
  ./20.upgrade-some.sh &&

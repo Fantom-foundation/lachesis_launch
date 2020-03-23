@@ -1,2 +1,4 @@
 bin/lachesis-*
 *.log
+bin/*.pswd
+bin/UTC--*

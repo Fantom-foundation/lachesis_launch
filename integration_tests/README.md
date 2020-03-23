@@ -15,7 +15,10 @@ is a set of scripts to run on private lachesis network.
     * `SFC` - local path to clonned [Fantom-foundation/fantom-sfc](https://github.com/Fantom-foundation/fantom-sfc) repo;
     * `KEYSTORE_DIR` - path to lachesis `data_dir` with postfix - `.lachesis`. Example `/tmp/testnode0/.lachesis`;
     * `PASSWORD` - set the password to this variable if `*.pswd` file with the password does not exist in `KEYSTORE_DIR`.
-3. Bash, installed golang and dependencies of Fantom-foundation/fantom-sfc/integration_tests (`npm install`).
+3. Complete these steps from directory [lachesis_launch/ubuntu](../ubuntu), these steps are necessary for sfc contract parameters in [32.test-sfc.sh](./32.test-sfc.sh) - `keyObject` and `password`:
+    * Edit [00.params.sh](../ubuntu/00.params.sh) for actual values.
+    * Run [01.keygen.sh](../ubuntu/01.keygen.sh) to generate keys for validators and SFC-admin.
+4. Bash, installed golang and dependencies of Fantom-foundation/fantom-sfc/integration_tests (`npm install`).
 
 
 ## Usage

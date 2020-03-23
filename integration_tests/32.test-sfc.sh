@@ -10,11 +10,11 @@ echo "
 ./local-node.sh ${vNEW} >/dev/null &
 sleep 30
 
-keyFile=$(find $KEYSTORE_DIR/keystore -type f | head -1)
+keyFile=$(find ./bin -type f -name "UTC--*" | head -1)
 kObject=$(less -FX $keyFile)
 if [ -z $PASSWORD ]
 then
-  PASSWORD=$(less -FX $(find $KEYSTORE_DIR -type f -regex '^.*\.pswd' | head -1))
+  PASSWORD=$(less -FX $(find ./bin -type f -regex '^.*\.pswd' | head -1))
 fi
 
 pushd ${SFC}/integration_tests  > /dev/null
