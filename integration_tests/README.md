@@ -1,7 +1,8 @@
 # Integration tests
 
 is a set of scripts to run on private lachesis network.
-
+These tests can be run on any private network. A private network can be launched using a steps from [ubuntu](../ubuntu/README.md).
+Using these scripts, you can run automated tests for SFC contract and node.
 
 ## Prerequisite
 
