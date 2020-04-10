@@ -297,7 +297,6 @@ Validator = "0x0000000000000000000000000000000000000000"
 MaxGasRateGrowthFactor = 3e+00
 MaxTxsFromSender = 8
 EpochTailLength = 1
-MaxParents = 7
 SmoothTpsThreshold = 24500000
 NoTxsThreshold = 840000
 EmergencyThreshold = 140000
