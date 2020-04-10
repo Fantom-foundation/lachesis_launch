@@ -31,8 +31,9 @@ cat << NOTE
 
 MANUAL OPERATION IS NEEDED: replace keys with generated keys in func TestGenesis()
     "vi ./lachesis/genesis/genesis.go"
-Then run next step
-    "./02.install.sh"
+Then run next steps
+    "./02.network-genesis.sh"
+    "./03.install.sh"
 
 After installing you can avoid TestGenesis() changes
     "git checkout -- ./lachesis/genesis/genesis.go"
