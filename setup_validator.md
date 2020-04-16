@@ -42,11 +42,19 @@ The ABI output as follows;
 
 ### Setup mainnet genesis
 
-Download the default genesis config.toml
+The default genesis config is located in `releases` directory by tags, for example `releases/v0.5.0/mainnet.toml`, for master - in `releases/master/mainnet.toml`.
+Download the default genesis mainnet.toml, for master:
 
-```
+```shell script
 cd $HOME/go/src/github.com/Fantom-foundation/go-lachesis/
-wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/config.toml .
+wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/releases/master/mainnet.toml .
+```
+
+Tag example:
+
+```shell script
+cd $HOME/go/src/github.com/Fantom-foundation/go-lachesis/
+wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/releases/v0.6.0-rc.2/mainnet.toml .
 ```
 
 Modify as required, but do not edit;
@@ -67,6 +75,9 @@ personal.sendTransaction(tx, "password")
 ```
 
 ### Start up a read only server   
+```shell script
+./lachesis --config mainnet.toml --nousb --rpc --rpcaddr=0.0.0.0 --rpcport=3001 --rpcvhosts=* --rpccorsdomain=* --rpcapi=eth,debug,admin,web3,personal,net,txpool,ftm,sfc --ws --wsaddr=0.0.0.0 --wsport=3500 --wsorigins=* --wsapi=eth,debug,admin,web3,personal,net,txpool,ftm,sfc --verbosity 4
 ```
-./lachesis --config config.toml --nousb --rpc --rpcaddr=0.0.0.0 --rpcport=3001 --rpcvhosts=* --rpccorsdomain=* --rpcapi=eth,debug,admin,web3,personal,net,txpool,ftm,sfc --ws --wsaddr=0.0.0.0 --wsport=3500 --wsorigins=* --wsapi=eth,debug,admin,web3,personal,net,txpool,ftm,sfc --verbosity 4
-```
+
+If you need to disable the node check for the latest version, add `--nocheckversion` to the command line.
+

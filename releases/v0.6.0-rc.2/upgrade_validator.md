@@ -96,9 +96,9 @@ COMMANDS:
 
 Download the default genesis mainnet.toml
 
-```
+```shell script
 cd $HOME/go/src/github.com/Fantom-foundation/go-lachesis/build
-wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/mainnet.toml .
+wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/releases/v0.6.0-rc.2/mainnet.toml .
 ```
 
 ### Start up a read only server
@@ -132,6 +132,8 @@ Start the validator node
 ```
 ./lachesis --config mainnet.toml --nousb --validator 0x --unlock 0x --password /path/to/password
 ```
+
+If you need to disable the node check for the latest version, add `--nocheckversion` to the command line.
 
 
 ### Checks via the console
