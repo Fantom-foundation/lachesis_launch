@@ -64,13 +64,14 @@ COMMANDS:
 
 ### Starting your node and joining the public testnet
 
-```
+```shell script
 cd build
 
-wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/testnet.toml
+wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/releases/v0.6.0/testnet.toml
 
 ./lachesis --config testnet.toml --nousb --datadir ~/.lachesis/testnet
 ```
+
 
 ### Creating a new account
 
@@ -122,6 +123,8 @@ Start the node
 ```
 ./lachesis --config testnet.toml --nousb --validator 0x --unlock 0x --password /path/to/password <YOUR IPC ENDPOINT>
 ```
+
+If you need to disable the node check for the latest version, add `--nocheckversion` to the command line.
 
 ### Run validator as pm2 process   
 Install nodejs, npm and pm2

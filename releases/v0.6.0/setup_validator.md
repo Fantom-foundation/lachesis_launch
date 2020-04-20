@@ -108,9 +108,9 @@ The ABI output as follows;
 
 Download the default genesis mainnet.toml
 
-```
+```shell script
 cd $HOME/go/src/github.com/Fantom-foundation/go-lachesis/build
-wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/mainnet.toml .
+wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/releases/v0.6.0/mainnet.toml .
 ```
 
 Modify as required, but do not edit;
@@ -205,6 +205,8 @@ Start the node
 ```
 ./lachesis --config mainnet.toml --nousb --rpc --rpcaddr=0.0.0.0 --rpcport=3001 --rpcvhosts=* --rpccorsdomain=* --rpcapi=eth,debug,admin,web3,personal,net,txpool,ftm,sfc --ws --wsaddr=0.0.0.0 --wsport=3500 --wsorigins=* --wsapi=eth,debug,admin,web3,personal,net,txpool,ftm,sfc --verbosity 4
 ```
+
+If you need to disable the node check for the latest version, add `--nocheckversion` to the command line.
 
 Attach to the node
 

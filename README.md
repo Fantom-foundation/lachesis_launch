@@ -88,11 +88,12 @@ COMMANDS:
 
 ### Joining the public mainnet
 
-Download the default genesis config `mainnet.toml`:
+The default genesis config is located in `releases` directory by tags, for example `releases/v0.5.0/mainnet.toml`.
+Download the last genesis config `mainnet.toml`:
 
-```
+```shell script
 cd $HOME/go/src/github.com/Fantom-foundation/go-lachesis/build/
-wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/mainnet.toml
+wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/releases/v0.6.0/mainnet.toml
 ```
 
 Start your node
@@ -100,6 +101,8 @@ Start your node
 ```
 ./lachesis --config mainnet.toml --nousb
 ```
+
+If you need to disable the node check for the latest version, add `--nocheckversion` to the command line.
 
 ### Creating a new account
 
