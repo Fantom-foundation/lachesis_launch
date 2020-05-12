@@ -66,6 +66,7 @@ mkdir -p $HOME/go/src/github.com/Fantom-foundation
 cd $HOME/go/src/github.com/Fantom-foundation/
 git clone https://github.com/Fantom-foundation/go-lachesis.git
 cd go-lachesis/
+git checkout tags/v0.6.0-rc.2 -b lachesis-v6rc2
 make build
 ```
 
