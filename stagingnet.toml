@@ -1,5 +1,4 @@
 [Node]
-omitempty = ""
 IPCPath = "lachesis.ipc"
 HTTPPort = 18545
 HTTPVirtualHosts = ["localhost"]
@@ -253,9 +252,9 @@ BlockCacheSize = 100
 PackInfosCacheSize = 100
 TxPositionsCacheSize = 1000
 EpochStatsCacheSize = 100
-ReceiptsCacheSize = 0
-StakersCacheSize = 0
-DelegatorsCacheSize = 0
+ReceiptsCacheSize = 100
+StakersCacheSize = 4000
+DelegatorsCacheSize = 4000
 
 [Lachesis.Protocol]
 LatencyImportance = 60
