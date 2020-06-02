@@ -325,9 +325,9 @@ BlockCacheSize = 100
 PackInfosCacheSize = 100
 TxPositionsCacheSize = 1000
 EpochStatsCacheSize = 100
-ReceiptsCacheSize = 100
-StakersCacheSize = 4000
-DelegatorsCacheSize = 4000
+ReceiptsCacheSize = 0
+StakersCacheSize = 0
+DelegatorsCacheSize = 0
 
 [Lachesis.Protocol]
 LatencyImportance = 60
