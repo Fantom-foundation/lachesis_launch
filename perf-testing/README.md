@@ -19,10 +19,11 @@ some practice to run fake network validators on ubuntu servers
 3.  Read and do the output instructions: build [lachesis](https://github.com/devintegral/go-lachesis/tree/perf-testing/cmd/lachesis/) and [tx-storm](https://github.com/devintegral/go-lachesis/tree/perf-testing/cmd/tx-storm/) binaries, check configs.
 4.  [20.fakenet-install.sh](./20.fakenet-install.sh) runs nodes as systemd service.
 5.  Check [21.status.sh](./21.status.sh) of nodes.
-6.  [30.txstorm-install.sh](./30.txstorm-install.sh) runs tx generator for each node.
-7.  See TPS with [31.tps-log.sh](./31.tps-log.sh).
-8.  [70.txstorm-stop.sh](./70.txstorm-stop.sh) stops tx genearatoe.
-9.  [80.fakenet-reset.sh](./80.fakenet-reset.sh) to start again.
-10. [88.total-destroy.sh](./88.total-destroy.sh) for clean.
+6.  [30.txstorm-install.sh](./30.txstorm-install.sh) INSTALL tx generator for each node.
+7.  [31.txstorm-start.sh](./31.txstorm-start.sh) runs tx generator for each node.
+8.  See TPS with [32.tps-log.sh](./31.tps-log.sh).
+9.  [70.txstorm-stop.sh](./70.txstorm-stop.sh) stops tx genearators.
+10. [80.fakenet-reset.sh](./80.fakenet-reset.sh) to start again.
+11. [88.total-destroy.sh](./88.total-destroy.sh) for clean.
 
 

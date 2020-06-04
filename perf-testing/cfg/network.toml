@@ -14,6 +14,11 @@ TrustedNodes = []
 ListenAddr = ":7946"
 EnableMsgEvents = false
 
+[Lachesis]
+TxIndex = true
+DecisiveEventsIndex = true
+EventLocalTimeIndex = true
+EnablePreimageRecording = false
 
 [Lachesis.Emitter.EmitIntervals]
 Min = 200000000
