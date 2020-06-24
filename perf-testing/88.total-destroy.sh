@@ -8,6 +8,7 @@ N=$((NODES-1))
 for i in `seq 0 $N`; do
     echo SERVER ${NAME}$i
     ssh ${NAME}$i "
+sudo killall tx-storm
 sudo systemctl stop lachesis-node
 sudo rm /etc/systemd/system/lachesis-node.service
 sudo systemctl daemon-reload
