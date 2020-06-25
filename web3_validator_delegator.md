@@ -1,11 +1,23 @@
-# Staking and Delegating (Work in Progress)
+# Staking and Delegating 
 
-**Note**: All references to "staker" and "stakers" refer to "validating nodes".
+**Note**: All references to "staker" and "stakers" refer to "validating nodes" or "validators".
 
+## Attach to your node 
+Attach to your running node. You may need to specify your specific configuration.
+
+```
+./lachesis attach
+```
 
 ## Loading the sfc
 First, you have to [initialize contract context](./README.md##init-SFC-contract-context)
 
+```
+abi = JSON.parse('...')
+sfc = web3.ftm.contract(abi).at("0xfc00face00000000000000000000000000000000")
+```
+
+Use the updated abi.
 
 ## Checking loading sfc has worked
 
@@ -51,8 +63,10 @@ Claim rewards earned from delegating your stake.
 sfc.calcDelegationRewards(YOUR_ADDRESS, from_epoch, max_epochs) // returns: rewards amount, first claimed epoch, last claimed epoch
 // claim rewards:
 personal.unlockAccount(YOUR_ADDRESS, <password>, 60) // unlock account for 60 second
-tx = sfc.claimDelegationRewards(from_epoch, max_epochs, {from: YOUR_ADDRESS}) // call multiple times if there's more epochs than max_epochs
+tx = sfc.claimDelegationRewards([max_epochs], {from: YOUR_ADDRESS}) // call multiple times if there's more epochs than max_epochs
 ```
+
+Specify max_epochs=200 to claim rewards of 200 epochs at a time to avoid running out of gas.
 
 #### Checks
 - Delegator must exist
@@ -142,8 +156,10 @@ YOUR_ID = sfc.getStakerID(YOUR_ADDRESS) // if 0, then staker doesn't exist, or S
 sfc.calcValidatorRewards(YOUR_ID, from_epoch, max_epochs) // returns: rewards amount, first claimed epoch, last claimed epoch
 // claim rewards:
 personal.unlockAccount(YOUR_ADDRESS, <password>, 60) // unlock account for 60 second
-tx = sfc.claimValidatorRewards(from_epoch, max_epochs, {from: YOUR_ADDRESS}) // call multiple times if there's more epochs than max_epochs
+tx = sfc.claimValidatorRewards([max_epochs], {from: YOUR_ADDRESS}) // call multiple times if there's more epochs than max_epochs
 ```
+
+Specify max_epochs=200 to claim rewards of 200 epochs at a time to avoid running out of gas.
 
 #### Checks
 - Staker must exist
