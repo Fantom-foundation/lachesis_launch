@@ -8,7 +8,7 @@
 Checks via the console
  
 
-This document describes the steps to upgrade a validator running go-lachesis v0.5.0-rc1 (v0.5.0-rc2) to latest version v0.6.0-rc2.
+This document describes the steps to upgrade a validator running go-lachesis v0.5.0-rc1 (v0.5.0-rc2) to the version v0.6.0-rc2.
 
 Validator Guides: [https://github.com/Fantom-foundation/go-lachesis/wiki/Validator-Guides](https://github.com/Fantom-foundation/go-lachesis/wiki/Validator-Guides)
 
@@ -132,9 +132,6 @@ Start the validator node
 ./lachesis --config mainnet.toml --nousb --validator 0x --unlock 0x --password /path/to/password
 ```
 
-If you need to disable the node check for the latest version, add `--nocheckversion` to the command line.
-
-
 ### Checks via the console
 
 Transfering funds via the console
@@ -148,17 +145,14 @@ var tx = {from: "0x", to: "0x", value: web3.toWei(4000000, "ether")}
 personal.sendTransaction(tx, "password")
 ```
 
-Interact with SFC via the console. Use the ABI output of the latest release `1.1.0-rc1` located at `./releases/sfc-abi-1.1.json`.
+Interact with SFC via the console. Use the ABI output of the release `1.1.0-rc1` located at `./releases/sfc-abi-1.1.json`.
 
-```
+```js
 // Init SFC contract context
-abi = JSON.parse('...')
+abi = PASTE_ABI_HERE
 sfc = web3.ftm.contract(abi).at("0xfc00face00000000000000000000000000000000")
 
 // Sanity check
-sfc.stakers(1) // if everything is allright, will return non-zero values
-
-// Use sfc checks
-
+sfc.stakersNum() // if everything is all right, will return non-zero value
 ```
 

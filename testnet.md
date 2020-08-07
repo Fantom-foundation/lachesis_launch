@@ -124,8 +124,6 @@ Start the node
 ./lachesis --config testnet.toml --nousb --validator 0x --unlock 0x --password /path/to/password <YOUR IPC ENDPOINT>
 ```
 
-If you need to disable the node check for the latest version, add `--nocheckversion` to the command line.
-
 ### Run validator as pm2 process   
 Install nodejs, npm and pm2
 
