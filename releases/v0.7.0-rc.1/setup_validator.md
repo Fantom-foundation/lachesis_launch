@@ -78,6 +78,8 @@ export export PATH=/snap/bin:$PATH
 cd $HOME/go/src/github.com/Fantom-foundation/
 git clone https://github.com/Fantom-foundation/fantom-sfc.git
 cd fantom-sfc/
+// to check specific sfc release, use:
+// git checkout tags/v2.0.2-rc.1 -b lachesis-v07rc1
 mkdir build
 cd build
 solc -o $PWD --optimize --optimize-runs=2000 --ast --asm --abi --bin-runtime --overwrite $PWD/../contracts/sfc/Staker.sol
@@ -159,24 +161,25 @@ Attach to your running node
 ```
 // Init SFC contract context
 abi = JSON.parse('...')
-sfc.contract = web3.ftm.contract(abi).at("0xfc00face00000000000000000000000000000000")
+// Note: define variable sfcc (instead of sfc) to avoid clashing with the sfc namespace introduced in sfc-2.0.2-rc1.
+sfcc = web3.ftm.contract(abi).at("0xfc00face00000000000000000000000000000000")
 
 // Sanity check
-sfc.contract.stakersNum() // if everything is allright, will return non-zero value
-sfc.contract.stakers(1) // will return staker 1's record
+sfcc.stakersNum() // if everything is alright, will return non-zero value
+sfcc.stakers(1) // will return staker 1's record
 
 // Create staker
 YOUR_ADDRESS = "0xfE19B9Ae8b056eE11d20A8F530326a2C3b99ADca"
-sfc.contract.getStakerID(YOUR_ADDRESS)
+sfcc.getStakerID(YOUR_ADDRESS)
 personal.unlockAccount(YOUR_ADDRESS, "password", 60) // make sure account is unlocked
 tx = sfc.createStake([], {from:YOUR_ADDRESS, value: "3175000000000000000000000"}) // 3175000.0 FTM
 // alternatively, use: 
-// tx = sfc.contract.createStake([], {from:YOUR_ADDRESS, value: web3.toWei("3175000.0", "ftm")}) // 3175000.0 FTM
+// tx = sfcc.createStake([], {from:YOUR_ADDRESS, value: web3.toWei("3175000.0", "ftm")}) // 3175000.0 FTM
 
 // Sanity checks
 ftm.getTransactionReceipt(tx) // check tx was confirmed
 
-sfc.contract.getStakerID(YOUR_ADDRESS)
+sfcc.getStakerID(YOUR_ADDRESS)
 ```
 
 ### Start up a read only server

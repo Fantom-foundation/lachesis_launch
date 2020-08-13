@@ -139,7 +139,8 @@ After the sfc is upgraded to `2.0.2-rc1`, its ABI output available at `./release
 ```js
 // Init SFC contract context
 abi = JSON.parse('...')
-sfc.contract = web3.ftm.contract(abi).at("0xfc00face00000000000000000000000000000000")
+// Note: define variable sfcc (instead of sfc) to avoid clashing with the sfc namespace introduced in sfc-2.0.2-rc1.
+sfcc = web3.ftm.contract(abi).at("0xfc00face00000000000000000000000000000000")
 
 // Sanity check
-sfc.contract.stakersNum() // if everything is all right, will return non-zero value
+sfcc.stakersNum() // if everything is all right, will return non-zero value

@@ -14,7 +14,8 @@ First, you have to [initialize contract context](./README.md##init-SFC-contract-
 
 ```
 abi = JSON.parse('...')
-sfc = web3.ftm.contract(abi).at("0xfc00face00000000000000000000000000000000")
+// Note: define variable sfcc (instead of sfc) to avoid clashing with the sfc namespace introduced in sfc-2.0.2-rc1.
+sfcc = web3.ftm.contract(abi).at("0xfc00face00000000000000000000000000000000")
 ```
 
 The ABI output of the release `1.1.0-rc1` is available at `./releases/sfc-abi-1.1.json`.
@@ -24,7 +25,7 @@ The ABI output of the release `1.1.0-rc1` is available at `./releases/sfc-abi-1.
 
 ```
 // Sanity check
-sfc.stakersNum() // if everything is all right, will return non-zero value
+sfcc.stakersNum() // if everything is all right, will return non-zero value
 ```
 
 ## Delegating
@@ -41,13 +42,13 @@ If you already have a delegation, then you have to eigher create a new address o
 ```
 YOUR_ADDRESS = <address>
 personal.unlockAccount(YOUR_ADDRESS, <password>, 60) // unlock account for 60 second
-tx = sfc.createDelegation(<stakerID>, {from: YOUR_ADDRESS, value: "<amount>"})
+tx = sfcc.createDelegation(<stakerID>, {from: YOUR_ADDRESS, value: "<amount>"})
 ```
 
 #### Checks
 - Staker must exist
 - Staker is active: staker isn't a cheater, isn't pruned for being offline, didn't prepare to withdraw
-- Delegated amount is greater or equal to `sfc.minDelegation()`
+- Delegated amount is greater or equal to `sfcc.minDelegation()`
 - No more than one delegation per address
 - This address isn't a staker
 - `Total amount of delegations to staker` is less or equal to `15.0` * `staker's stake amount`.
@@ -61,10 +62,10 @@ Claim rewards earned from delegating your stake.
 
 ```
 // check you have rewards:
-sfc.calcDelegationRewards(YOUR_ADDRESS, from_epoch, max_epochs) // returns: rewards amount, first claimed epoch, last claimed epoch
+sfcc.calcDelegationRewards(YOUR_ADDRESS, from_epoch, max_epochs) // returns: rewards amount, first claimed epoch, last claimed epoch
 // claim rewards:
 personal.unlockAccount(YOUR_ADDRESS, <password>, 60) // unlock account for 60 second
-tx = sfc.claimDelegationRewards([max_epochs], {from: YOUR_ADDRESS}) // call multiple times if there's more epochs than max_epochs
+tx = sfcc.claimDelegationRewards([max_epochs], {from: YOUR_ADDRESS}) // call multiple times if there's more epochs than max_epochs
 ```
 
 Specify max_epochs=200 to claim rewards of 200 epochs at a time to avoid running out of gas.
@@ -84,7 +85,7 @@ After calling this function, you won't be able to claim rewards anymore. Claim a
 
 ```
 personal.unlockAccount(YOUR_ADDRESS, <password>, 60) // unlock account for 60 second
-tx = sfc.prepareToWithdrawDelegation({from: YOUR_ADDRESS})
+tx = sfcc.prepareToWithdrawDelegation({from: YOUR_ADDRESS})
 ```
 
 #### Checks
@@ -101,12 +102,12 @@ If staker is cheater (i.e. doublesigned), then delegation will be erased, but de
 
 ```
 personal.unlockAccount(YOUR_ADDRESS, <password>, 60) // unlock account for 60 second
-tx = sfc.withdrawDelegation({from:YOUR_ADDRESS })
+tx = sfcc.withdrawDelegation({from:YOUR_ADDRESS })
 ```
 
 #### Checks
-- Passed at least `sfc.delegationLockPeriodTime()` seconds since `prepareToWithdrawDelegation` was called
-- Passed at least `sfc.delegationLockPeriodEpochs()` epochs since `prepareToWithdrawDelegation` was called
+- Passed at least `sfcc.delegationLockPeriodTime()` seconds since `prepareToWithdrawDelegation` was called
+- Passed at least `sfcc.delegationLockPeriodEpochs()` epochs since `prepareToWithdrawDelegation` was called
 
 ## Validator Staking
 
@@ -119,11 +120,11 @@ Minimum stake is 3175000000000000000000000 Wei (3,175,000 FTM)
 ```
 // Create validator
 personal.unlockAccount(YOUR_ADDRESS, "password", 60) // unlock account for 60 second
-tx = sfc.createStake([], {from:YOUR_ADDRESS, value: "<amount>"}) // minimum 3,175,000 FTM required to stake
+tx = sfcc.createStake([], {from:YOUR_ADDRESS, value: "<amount>"}) // minimum 3,175,000 FTM required to stake
 ```
 
 #### Checks
-- Stake amount is greater or equal to `sfc.minStake()`
+- Stake amount is greater or equal to `sfcc.minStake()`
 - This address isn't a staker
 - This address isn't a delegator
 
@@ -136,11 +137,11 @@ The new stake will be applied in next epoch.
 ```
 // Create Staker
 personal.unlockAccount(YOUR_ADDRESS, "password", 60) // unlock account for 60 second
-tx = sfc.increaseStake({from:YOUR_ADDRESS, value: "<amount>"})
+tx = sfcc.increaseStake({from:YOUR_ADDRESS, value: "<amount>"})
 ```
 
 #### Checks
-- Amount is greater or equal to `sfc.minStakeIncrease()`
+- Amount is greater or equal to `sfcc.minStakeIncrease()`
 - Staker exists
 - Staker is active: staker isn't a cheater, isn't pruned for being offline, didn't prepare to withdraw
 
@@ -152,15 +153,15 @@ Claim rewards earned from being a validator.
 - `max_epochs` is maximum number of epochs to claim rewards for. If not sure, use 40.
 
 ```
-YOUR_ID = sfc.getStakerID(YOUR_ADDRESS) // if 0, then staker doesn't exist, or SFC functions aren't initialized correctly
+YOUR_ID = sfcc.getStakerID(YOUR_ADDRESS) // if 0, then staker doesn't exist, or SFC functions aren't initialized correctly
 // check you have rewards:
-sfc.calcValidatorRewards(YOUR_ID, from_epoch, max_epochs) // returns: rewards amount, first claimed epoch, last claimed epoch
+sfcc.calcValidatorRewards(YOUR_ID, from_epoch, max_epochs) // returns: rewards amount, first claimed epoch, last claimed epoch
 // claim rewards:
 personal.unlockAccount(YOUR_ADDRESS, <password>, 60) // unlock account for 60 second
-tx = sfc.claimValidatorRewards([max_epochs], {from: YOUR_ADDRESS}) // call multiple times if there's more epochs than max_epochs
+tx = sfcc.claimValidatorRewards([max_epochs], {from: YOUR_ADDRESS}) // call multiple times if there's more epochs than max_epochs
 ```
 
-Specify max_epochs=200 to claim rewards of 200 epochs at a time to avoid running out of gas.
+Specify maxEpochs=200 to claim rewards of 200 epochs at a time to avoid running out of gas.
 
 #### Checks
 - Staker must exist
@@ -174,7 +175,7 @@ Put in a request to withdraw stake, can then call withdrawStake() function after
 
 ```
 personal.unlockAccount(YOUR_ADDRESS, "password", 60) // unlock account for 60 second
-tx = sfc.prepareToWithdrawStake({from: YOUR_ADDRESS})
+tx = sfcc.prepareToWithdrawStake({from: YOUR_ADDRESS})
 ```
 
 #### Checks
@@ -183,15 +184,15 @@ tx = sfc.prepareToWithdrawStake({from: YOUR_ADDRESS})
 
 ### Withdraw Stake
 
-After enough seconds and epochs have passed since calling PreparedToWithdrawStake(), you can call this function successfully.
+After enough seconds and epochs have passed since calling preparedToWithdrawStake(), you can call this function successfully.
 
 After calling this function, you won't be able to claim rewards anymore. Claim all the rewards before calling this function.
 
 ```
 personal.unlockAccount(YOUR_ADDRESS, "password", 60) // unlock account for 60 second
-tx = sfc.withdrawStake({from: YOUR_ADDRESS})
+tx = sfcc.withdrawStake({from: YOUR_ADDRESS})
 ```
 
 #### Checks
-- Passed at least `sfc.stakeLockPeriodTime()` seconds since `prepareToWithdrawStake` was called
-- Passed at least `sfc.stakeLockPeriodEpochs()` epochs since `prepareToWithdrawStake` was called
+- Passed at least `sfcc.stakeLockPeriodTime()` seconds since `prepareToWithdrawStake` was called
+- Passed at least `sfcc.stakeLockPeriodEpochs()` epochs since `prepareToWithdrawStake` was called
