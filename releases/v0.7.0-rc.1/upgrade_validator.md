@@ -5,17 +5,15 @@
 [Download new mainnet genesis](#download-new-mainnet-genesis)  
 [Start up a read only server](#start-up-a-read-only-server)  
 [Startup as a validator](#startup-as-a-validator)  
-Checks via the console
- 
 
-This document describes the steps to upgrade a validator running go-lachesis v0.5.0-rc1 (v0.5.0-rc2) to the version v0.6.0-rc2.
+This document describes the steps to upgrade a validator running go-lachesis v0.6.0-rc2 (v0.6.0-rc3) to the version v0.7.0-rc1.
 
 Validator Guides: [https://github.com/Fantom-foundation/go-lachesis/wiki/Validator-Guides](https://github.com/Fantom-foundation/go-lachesis/wiki/Validator-Guides)
 
 
 ### Stop the node
 
-Make sure to stop the node first and the node is not restarted before processing the next steps.
+Make sure to stop the node first and that the node is not restarted before processing the next steps.
 
 ```
 killall lachesis
@@ -43,24 +41,20 @@ export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
 ### Backup
 
-Make sure the node is already stopped.
+Make sure the node has already stopped.
 
 Backup current datadir directory (copy the datadir directory). 
-You can copy keystore directory, and /path/to/datadir/*-ldb folders.
+It includes the datadir/keystore (private keys) directory.
 
 ```
-cd
-cp -rf  .lachesis/ .lachesis_bk
+cp -rf  .lachesis/ .lachesis_bk_06rc2
 ```
-
 
 Backup go-lachesis folder
 
 ```
-cd $HOME/go/src/github.com/Fantom-foundation/
-mv go-lachesis go-lachesis-bk_v05
+mv go-lachesis go-lachesis-bk_v06
 ```
-
 
 ### Checkout new version of go-lachesis
 
@@ -68,27 +62,17 @@ mv go-lachesis go-lachesis-bk_v05
 cd $HOME/go/src/github.com/Fantom-foundation/
 git clone https://github.com/Fantom-foundation/go-lachesis.git
 cd go-lachesis/
-git checkout tags/v0.6.0-rc.2 -b lachesis-v06rc2
+git checkout tags/v0.7.0-rc.1 -b lachesis-v07rc1
 make build
 ```
 
 Confirm your go-lachesis version
 
-```
-./build/lachesis help
-
-VERSION:
-   0.6.0-rc.2
-COMMANDS:
-   account                            Manage accounts
-   attach                             Start an interactive JavaScript environment (connect to node)
-   console                            Start an interactive JavaScript environment
-   dumpconfig                         Show configuration values
-   js                                 Execute the specified JavaScript files
-   license                            Display license information
-   version                            Print version numbers
-   wallet                             Manage Ethereum presale wallets
-   help                               Shows a list of commands or help for one command
+```shell script
+./build/lachesis version
+Go-Lachesis
+Version: 0.7.0-rc.1
+...
 ```
 
 ### Download new mainnet genesis
@@ -97,7 +81,7 @@ Download the default genesis mainnet.toml
 
 ```shell script
 cd $HOME/go/src/github.com/Fantom-foundation/go-lachesis/build
-wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/releases/v0.6.0/mainnet.toml .
+wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/releases/v0.7.0-rc.1/mainnet.toml .
 ```
 
 ### Start up a read only server
@@ -119,7 +103,8 @@ Validator Guides:[https://github.com/Fantom-foundation/go-lachesis/wiki/Validato
 
 ### Startup as a validator
 
-Now the non-validator node is synced.
+The node should be synced before launching the validator.
+
 Stop your current lachesis process.
 
 ```
@@ -132,33 +117,29 @@ Start the validator node
 ./lachesis --config mainnet.toml --nousb --validator 0x --unlock 0x --password /path/to/password
 ```
 
-If you need to disable the node check for the latest version, add `--nocheckversion` to the command line.
-
 
 ### Checks via the console
 
-Transfering funds via the console
+Transferring funds using the console
 
 ```
 ./lachesis attach
 ```
 
 ```
-var tx = {from: "0x", to: "0x", value: web3.toWei(4000000, "ether")}
+var tx = {from: "0xSENDER", to: "0xRECEIVER", value: web3.toWei("1000", "ftm")}
 personal.sendTransaction(tx, "password")
 ```
 
-Interact with SFC via the console. Use the ABI output of the release `1.1.0-rc1` located at `./releases/sfc-abi-1.1.json`.
+Interact with SFC using the console.
 
-```
+Use the ABI output of the release `1.1.0-rc1` located at `./releases/sfc-abi-1.1.json`.
+After the sfc is upgraded to `2.0.2-rc1`, its ABI output available at `./releases/sfc-abi-2.0.2-rc.1.json` can be used.
+
+```js
 // Init SFC contract context
 abi = JSON.parse('...')
-sfc = web3.ftm.contract(abi).at("0xfc00face00000000000000000000000000000000")
+sfc.contract = web3.ftm.contract(abi).at("0xfc00face00000000000000000000000000000000")
 
 // Sanity check
-sfc.stakers(1) // if everything is allright, will return non-zero values
-
-// Use sfc checks
-
-```
-
+sfc.contract.stakersNum() // if everything is all right, will return non-zero value

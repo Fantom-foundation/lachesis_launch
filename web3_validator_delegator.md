@@ -17,7 +17,7 @@ abi = JSON.parse('...')
 sfc = web3.ftm.contract(abi).at("0xfc00face00000000000000000000000000000000")
 ```
 
-The ABI output of the latest release is `1.1.0-rc1` is available at `./releases/sfc-abi-1.1.json`.
+The ABI output of the release `1.1.0-rc1` is available at `./releases/sfc-abi-1.1.json`.
 
 
 ## Checking loading sfc has worked

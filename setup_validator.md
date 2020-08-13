@@ -43,12 +43,12 @@ Our latest release is `1.1.0-rc1` and the ABI output can be found in `./releases
 
 ### Setup mainnet genesis
 
-The default genesis config is located in `releases` directory by tags, for example `releases/v0.5.0/mainnet.toml`.
+The default genesis config is located in `releases` directory by tags, for example `releases/v0.6.0/mainnet.toml`.
 Download the latest genesis mainnet.toml:
 
 ```shell script
 cd $HOME/go/src/github.com/Fantom-foundation/go-lachesis/
-wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/releases/v0.6.0/mainnet.toml
+wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/releases/v0.7.0-rc.1/mainnet.toml
 ```
 
 Modify as required, but do not edit;
@@ -64,7 +64,7 @@ Modify as required, but do not edit;
 ```
 
 ```
-var tx = {from: "0x", to: "0x", value: web3.toWei(4000000, "ether")}
+var tx = {from: "0xSENDER", to: "0xRECEIVER", value: web3.toWei("1000", "ftm")}
 personal.sendTransaction(tx, "password")
 ```
 
