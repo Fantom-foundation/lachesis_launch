@@ -26,7 +26,7 @@ cd $HOME/go/src/github.com/Fantom-foundation/
 git clone https://github.com/Fantom-foundation/fantom-sfc.git
 cd fantom-sfc/
 // to check specific sfc release, use:
-// git checkout tags/v2.0.2-rc.1 -b lachesis-v07rc1
+// git checkout tags/v2.0.2-rc.1 -b sfc-v2rc1
 mkdir build
 cd build
 solc -o $PWD --optimize --optimize-runs=2000 --ast --asm --abi --bin-runtime --overwrite $PWD/../contracts/sfc/Staker.sol

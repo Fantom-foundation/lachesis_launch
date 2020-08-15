@@ -79,7 +79,7 @@ cd $HOME/go/src/github.com/Fantom-foundation/
 git clone https://github.com/Fantom-foundation/fantom-sfc.git
 cd fantom-sfc/
 // to check specific sfc release, use:
-// git checkout tags/v2.0.2-rc.1 -b lachesis-v07rc1
+// git checkout tags/v2.0.2-rc.1 -b sfc-v2rc1
 mkdir build
 cd build
 solc -o $PWD --optimize --optimize-runs=2000 --ast --asm --abi --bin-runtime --overwrite $PWD/../contracts/sfc/Staker.sol
@@ -161,7 +161,7 @@ Attach to your running node
 ```
 // Init SFC contract context
 abi = JSON.parse('...')
-// Note: define variable sfcc (instead of sfc) to avoid clashing with the sfc namespace introduced in sfc-2.0.2-rc1.
+// Note: define variable sfcc (instead of sfc) to avoid clashing with the sfc namespace introduced in go-lachesis v0.7.0-rc1.
 sfcc = web3.ftm.contract(abi).at("0xfc00face00000000000000000000000000000000")
 
 // Sanity check

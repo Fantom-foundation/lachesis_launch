@@ -14,7 +14,7 @@ First, you have to [initialize contract context](./README.md##init-SFC-contract-
 
 ```
 abi = JSON.parse('...')
-// Note: define variable sfcc (instead of sfc) to avoid clashing with the sfc namespace introduced in sfc-2.0.2-rc1.
+// Note: define variable sfcc (instead of sfc) to avoid clashing with the sfc namespace introduced in go-lachesis v0.7.0-rc1.
 sfcc = web3.ftm.contract(abi).at("0xfc00face00000000000000000000000000000000")
 ```
 
