@@ -79,7 +79,7 @@ cd $HOME/go/src/github.com/Fantom-foundation/
 git clone https://github.com/Fantom-foundation/fantom-sfc.git
 cd fantom-sfc/
 // to check specific sfc release, use:
-// git checkout tags/v2.0.2-rc.1 -b sfc-v2rc1
+// git checkout tags/v2.0.2-rc.2 -b sfc-v2rc2
 mkdir build
 cd build
 solc -o $PWD --optimize --optimize-runs=2000 --ast --asm --abi --bin-runtime --overwrite $PWD/../contracts/sfc/Staker.sol
@@ -95,7 +95,7 @@ The ABI output as follows;
 ```
 
 The ABI output of the release `1.1.0-rc1` is available at `./releases/sfc-abi-1.1.json`.
-After the sfc is upgraded to `2.0.2-rc1`, its ABI output available at `./releases/sfc-abi-2.0.2-rc.1.json` can be used.
+After the sfc is upgraded to `2.0.2-rc2`, its ABI output available at `./releases/sfc-abi-2.0.2-rc.2.json` can be used.
 
 ### Setup mainnet genesis
 
@@ -103,7 +103,7 @@ Download the default genesis mainnet.toml
 
 ```
 cd $HOME/go/src/github.com/Fantom-foundation/go-lachesis/build
-wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/releases/v0.7.0-rc.1/mainnet.toml .
+wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/releases/v0.7.0-rc.1/mainnet.toml
 ```
 
 Modify as required, but do not edit;
@@ -185,7 +185,7 @@ sfcc.getStakerID(YOUR_ADDRESS)
 ### Start up a read only server
 
 ```
-./lachesis --config mainnet.toml --nousb --rpc --rpcaddr=0.0.0.0 --rpcport=3001 --rpcvhosts=* --rpccorsdomain=* --rpcapi=eth,debug,admin,web3,personal,net,txpool,ftm,sfc --ws --wsaddr=0.0.0.0 --wsport=3500 --wsorigins=* --wsapi=eth,debug,admin,web3,personal,net,txpool,ftm,sfc --verbosity 4
+./lachesis --config mainnet.toml --nousb --rpc --rpcaddr=0.0.0.0 --rpcport=3001 --rpcvhosts=* --rpccorsdomain=* --rpcapi=eth,debug,admin,web3,personal,net,txpool,ftm,sfc --ws --wsaddr=0.0.0.0 --wsport=3500 --wsorigins=* --wsapi=eth,debug,admin,web3,personal,net,txpool,ftm,sfc --verbosity 3
 ```
 
 Attach to the node

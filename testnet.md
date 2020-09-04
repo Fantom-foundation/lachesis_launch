@@ -48,26 +48,16 @@ make build
 Confirm your go-lachesis version
 
 ```
-./build/lachesis help
-
-VERSION:
-  0.6.0-rc.2
-COMMANDS:
-   account                            Manage accounts
-   attach                             Start an interactive JavaScript environment (connect to node)
-   console                            Start an interactive JavaScript environment
-   dumpconfig                         Show configuration values
-   js                                 Execute the specified JavaScript files
-   wallet                             Manage Ethereum presale wallets
-   help                               Shows a list of commands or help for one command
+./build/lachesis version
+Go-Lachesis
+Version: 0.7.0-rc.1
 ```
 
 ### Starting your node and joining the public testnet
 
 ```shell script
 cd build
-
-wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/releases/v0.6.0/testnet.toml
+wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/releases/v0.7.0-rc.1/testnet.toml
 
 ./lachesis --config testnet.toml --nousb --datadir ~/.lachesis/testnet
 ```

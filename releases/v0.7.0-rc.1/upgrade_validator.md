@@ -81,13 +81,13 @@ Download the default genesis mainnet.toml
 
 ```shell script
 cd $HOME/go/src/github.com/Fantom-foundation/go-lachesis/build
-wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/releases/v0.7.0-rc.1/mainnet.toml .
+wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/releases/v0.7.0-rc.1/mainnet.toml
 ```
 
 ### Start up a read only server
 
 ```
-./lachesis --config mainnet.toml --nousb --rpc --rpcaddr=0.0.0.0 --rpcport=3001 --rpcvhosts=* --rpccorsdomain=* --rpcapi=eth,debug,admin,web3,personal,net,txpool,ftm,sfc --ws --wsaddr=0.0.0.0 --wsport=3500 --wsorigins=* --wsapi=eth,debug,admin,web3,personal,net,txpool,ftm,sfc --verbosity 4
+./lachesis --config mainnet.toml --nousb --rpc --rpcaddr=0.0.0.0 --rpcport=3001 --rpcvhosts=* --rpccorsdomain=* --rpcapi=eth,debug,admin,web3,personal,net,txpool,ftm,sfc --ws --wsaddr=0.0.0.0 --wsport=3500 --wsorigins=* --wsapi=eth,debug,admin,web3,personal,net,txpool,ftm,sfc --verbosity 3
 ```
 
 Attach to the node
@@ -134,7 +134,7 @@ personal.sendTransaction(tx, "password")
 Interact with SFC using the console.
 
 Use the ABI output of the release `1.1.0-rc1` located at `./releases/sfc-abi-1.1.json`.
-After the sfc is upgraded to `2.0.2-rc1`, its ABI output available at `./releases/sfc-abi-2.0.2-rc.1.json` can be used.
+After the sfc is upgraded to `2.0.2-rc2`, its ABI output available at `./releases/sfc-abi-2.0.2-rc.2.json` can be used.
 
 ```js
 // Init SFC contract context
