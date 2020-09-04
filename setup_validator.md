@@ -46,7 +46,7 @@ After the sfc is upgraded to `2.0.2-rc1`, its ABI output available at `./release
 
 ### Setup mainnet genesis
 
-The default genesis config is located in `releases` directory by tags, for example `releases/v0.6.0/mainnet.toml`.
+The default genesis config is located in `releases` directory by tags, for example `releases/v0.7.0-rc.1/mainnet.toml`.
 Download the latest genesis mainnet.toml:
 
 ```shell script

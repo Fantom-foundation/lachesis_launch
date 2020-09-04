@@ -20,6 +20,8 @@ Explorer Api Server:[https://api.fantom.network](https://api.fantom.network)
 
 Explorer SocketIo Server: [https://ws.fantom.network/](https://ws.fantom.network/)
 
+Explorer RPC Server:[https://rpc.fantom.network](https://rpc.fantom.network)
+
 Api Documentation is available [here](https://app.swaggerhub.com/apis/devintegral7/fantom-explorer_api/0.1#/info).
 
 - Please replace http://3.136.216.35:3100 with https://api.fantom.network as the api endpoint.
@@ -73,18 +75,9 @@ make build
 Confirm your go-lachesis version
 
 ```
-./build/lachesis help
-
-VERSION:
-   0.6.0-rc.2
-COMMANDS:
-   account                            Manage accounts
-   attach                             Start an interactive JavaScript environment (connect to node)
-   console                            Start an interactive JavaScript environment
-   dumpconfig                         Show configuration values
-   js                                 Execute the specified JavaScript files
-   wallet                             Manage Ethereum presale wallets
-   help                               Shows a list of commands or help for one command
+./build/lachesis version
+Go-Lachesis
+Version: 0.7.0-rc.1
 ```
 
 ### Joining the public mainnet
@@ -94,7 +87,7 @@ Download the last genesis config `mainnet.toml`:
 
 ```shell script
 cd $HOME/go/src/github.com/Fantom-foundation/go-lachesis/build/
-wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/releases/v0.6.0/mainnet.toml
+wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/releases/v0.7.0-rc.1/mainnet.toml
 ```
 
 Start your node
