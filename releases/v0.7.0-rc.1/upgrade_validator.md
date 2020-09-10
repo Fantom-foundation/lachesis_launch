@@ -133,8 +133,7 @@ personal.sendTransaction(tx, "password")
 
 Interact with SFC using the console.
 
-Use the ABI output of the release `1.1.0-rc1` located at `./releases/sfc-abi-1.1.json`.
-After the sfc is upgraded to `2.0.2-rc2`, its ABI output available at `./releases/sfc-abi-2.0.2-rc.2.json` can be used.
+The current sfc release is `2.0.2-rc2`. The ABI output available at `./releases/sfc-abi-2.0.2-rc.2.json`.
 
 ```js
 // Init SFC contract context
