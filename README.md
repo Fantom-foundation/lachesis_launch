@@ -144,7 +144,7 @@ abi = JSON.parse('[{"constant":true,"inputs":[],"name":"minDelegation","outputs"
 sfcc = web3.ftm.contract(abi).at("0xfc00face00000000000000000000000000000000")
 ```
 
-The current sfc release is `2.0.2-rc2`. The ABI output available at `./releases/sfc-abi-2.0.2-rc.2.json`.
+The current sfc release is `2.0.4-rc2`. The ABI output available at `./releases/sfc-abi-2.0.4-rc.2.json`.
 
 #### Creating a staker
 

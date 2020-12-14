@@ -133,7 +133,7 @@ personal.sendTransaction(tx, "password")
 
 Interact with SFC using the console.
 
-The current sfc release is `2.0.2-rc2`. The ABI output available at `./releases/sfc-abi-2.0.2-rc.2.json`.
+The current sfc release is `2.0.4-rc2`. The ABI output available at `./releases/sfc-abi-2.0.4-rc.2.json`.
 
 ```js
 // Init SFC contract context
