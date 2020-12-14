@@ -35,4 +35,8 @@ personal.unlockAccount(YOUR_ADDRESS, "password", 60)
 
 **Note**: All references to "staker" and "stakers" refer to "validating nodes" or "validators".
 
+ABI output for the StakeTokenizer contract: `./releases/stake-tokenizer-abi.json`.
+
+ABI output for the SFTM token contract: `./releases/sftm-abi.json`.
+
 https://github.com/Fantom-foundation/fantom-sfc/wiki/SFTM-calls-reference
