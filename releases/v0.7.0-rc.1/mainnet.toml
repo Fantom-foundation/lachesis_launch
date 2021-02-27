@@ -301,9 +301,9 @@ NoTxsThreshold = 840000
 EmergencyThreshold = 140000
 
 [Lachesis.Emitter.EmitIntervals]
-Min = 200000000
+Min = 300000000
 Max = 720000000000
-Confirming = 200000000
+Confirming = 400000000
 SelfForkProtection = 1800000000000
 
 [Lachesis.TxPool]
