@@ -2,7 +2,6 @@
 
 #######################################
 # Bash script to launch a read-only lachesis node
-# https://github.com/Fantom-foundation/lachesis_launch/blob/master/README.md
 #######################################
 
 LACHESIS_VERSION='0.7.0-rc.1'
@@ -36,4 +35,4 @@ cd $HOME/go/src/github.com/Fantom-foundation/go-lachesis/build/
 wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/releases/v0.7.0-rc.1/mainnet.toml
 
 # Start a read-only node to join the public mainnet
-./lachesis --config mainnet.toml --nousb
+nohup ./lachesis --config mainnet.toml --nousb &
