@@ -29,7 +29,7 @@ killall lachesis
 - then run your validator node:
 
 ```
-nohup ./lachesis --config mainnet.toml --nousb --validator 0x --unlock 0x --password /path/to/password &
+nohup ./lachesis --nousb --validator 0xAddress --unlock 0xAddress --password /path/to/password &
 ```
 
 It's complete. Your node is running !!

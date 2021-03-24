@@ -7,7 +7,7 @@ Attach to a running node. You may need to specify your specific configuration.
 lachesis attach
 ```
 
-### Loading the sfc
+### Loading the SFC
 First, you have to [initialize contract context](./README.md##init-SFC-contract-context)
 
 ```js
