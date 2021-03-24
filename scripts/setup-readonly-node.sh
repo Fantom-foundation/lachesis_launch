@@ -1,10 +1,10 @@
 #!/bin/bash
 
 #######################################
-# Bash script to launch a read-only lachesis node
+# Bash script to launch a read-only go-opera node
 #######################################
 
-LACHESIS_VERSION='1.0.0-rc.0'
+VERSION='1.0.0-rc.1'
 
 # Update and apt-get install build-essential
 sudo apt-get update
@@ -21,14 +21,15 @@ export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
-# Checkout and build go-lachesis
-mkdir -p $HOME/go/src/github.com/Fantom-foundation
-cd $HOME/go/src/github.com/Fantom-foundation/
-git clone https://github.com/Fantom-foundation/go-lachesis.git
-cd go-lachesis/
-git checkout release/$LACHESIS_VERSION
+# Checkout and build go-opera
+git clone https://github.com/Fantom-foundation/go-opera.git
+cd go-opera/
+git checkout release/$VERSION
 make build
 
+# Download genesis file
+cd build/
+# TODO add genesis file link after the launch
+
 # Start a read-only node to join the public mainnet
-cd $HOME/go/src/github.com/Fantom-foundation/go-lachesis/build/
-nohup ./lachesis --nousb &
+nohup ./opera --genesis mainnet.g --nousb &
