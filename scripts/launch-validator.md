@@ -3,26 +3,28 @@
 ## 1. Setup an AWS node
 - Ubuntu Server 20.04 LTS 64-bit
 - We would recommend the following (or better): 
-m5.xlarge (4 CPUs and 16GB), 500GB SSD.
-r5.large (2CPUs and 16GB), 500GB SSD.
+```
+m5.xlarge (4 CPUs and 16GB), 500GB SSD
+r5.large (2 CPUs and 16GB), 500GB SSD
+```
  
-- Open up port 22 for SSH, and port 5050 for both TCP and UDP traffic.
+- Open up port 22 for SSH, and port 5050 for both TCP and UDP traffic
 
 ## 2. Launch a read-only Opera node
- - follow instructions in [launching go-opera readonly node](./setup-readonly-node.sh).
+ - Follow instructions in [launching go-opera readonly node](./setup-readonly-node.sh)
 
 Wait for your node to sync up.
 
 ## 3. Run Opera validator
-- stop read-only node
+- Stop read-only node
 
 ```shell script
 killall opera
 ```
 
-- wait until the read-only node has stopped.
+- Wait until the read-only node has stopped
 
-- then run your validator node:
+- Then run your validator node:
 
 ```shell script
 nohup opera --nousb --validator.pubkey ID --validator.pubkey 0xPubkey --validator.password /path/to/password &
