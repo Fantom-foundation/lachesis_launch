@@ -25,11 +25,11 @@ export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 git clone https://github.com/Fantom-foundation/go-opera.git
 cd go-opera/
 git checkout release/$VERSION
-make build
+make
 
 # Download genesis file
 cd build/
 # TODO add genesis file link after the launch
 
-# Start a read-only node to join the public mainnet
-nohup ./opera --genesis mainnet.g --nousb &
+# Start a read-only node to join the selected network
+nohup ./opera --genesis network.g --nousb &
