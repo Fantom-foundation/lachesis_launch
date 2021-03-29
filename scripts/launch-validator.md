@@ -13,7 +13,7 @@ r5.large (2 CPUs and 16GB), 500GB SSD
 ## 2. Launch a read-only Opera node
  - Follow instructions in [launching go-opera readonly node](./setup-readonly-node.sh)
 
-Wait for your node to sync up.
+Wait for your node to sync up
 
 ## 3. Run Opera validator
 - Stop read-only node
