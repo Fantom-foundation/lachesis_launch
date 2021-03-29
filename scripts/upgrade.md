@@ -19,8 +19,8 @@ cp -rf  ~/.lachesis/opera ~/.opera
 ```shell script
 git clone https://github.com/Fantom-foundation/go-opera.git
 cd go-opera/
-git checkout release/$VERSION
-make build
+git checkout release/1.0.0-rc.1
+make
 ```
 
 Confirm your go-opera version
