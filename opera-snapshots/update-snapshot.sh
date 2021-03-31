@@ -1,0 +1,86 @@
+#!/usr/bin/env bash
+cd $(dirname $0)
+set -ex
+
+NODE_API=http://localhost:18545
+mkdir -p ./files
+
+
+# Don't start often than period
+
+PERIOD_SEC=$(( 30*60 ))
+touch -d "${PERIOD_SEC} seconds ago" ./files/part.snapshot
+if
+	AGE_SEC=$(( $(date +%s)-$(stat -c %Y ./files/part.snapshot) ))
+	[ ${AGE_SEC} -lt ${PERIOD_SEC} ]
+then
+    echo "Snapshot was updated recently. Wait then try again later."
+    exit 1
+fi
+
+
+# Check for new epoch
+
+current_epoch() {
+    curl -X POST ${NODE_API} \
+	-H 'Content-Type: application/json' \
+	-d @- << JSON | jq --raw-output '.result' | while read EPOCH; do echo $(($EPOCH)); done
+{"jsonrpc":"2.0",
+ "method":"ftm_currentEpoch",
+ "params":[],
+ "id":1 }
+JSON
+}
+
+EPOCH_WAS=$(cat files/was.epoch 2>/dev/null || echo 0)
+EPOCH_NOW=$(current_epoch || echo 0)
+if
+    [ ${EPOCH_NOW} -le ${EPOCH_WAS} ]
+then
+    echo "There are no new epoch. Wait then try again later."
+    exit 1
+fi
+
+
+# Export events:
+
+export_events() {
+    local F=$(echo "obase=16; $1" | bc)
+    local T=$(echo "obase=16; $2" | bc)
+    local O="$3"
+    curl -X POST ${NODE_API} \
+	-H 'Content-Type: application/json' \
+	-d @- << JSON | jq --raw-output '.result' | while read EPOCH; do echo $(($EPOCH)); done
+{"jsonrpc":"2.0",
+ "method":"dag_exportEvents",
+ "params":["0x$F", "0x$T", "$O"],
+ "id":1 }
+JSON
+}
+
+EPOCH_TO=$((EPOCH_NOW-1))
+export_events ${EPOCH_WAS} ${EPOCH_TO} "$(readlink -f ./files)/part.snapshot"
+
+if [ -f ./files/${EPOCH_WAS}.snapshot ]
+then
+    # append prev file to the snapshot
+    cp ./files/${EPOCH_WAS}.snapshot ./files/${EPOCH_NOW}.snapshot
+    tail -c +9 ./files/part.snapshot >> ./files/${EPOCH_NOW}.snapshot
+else
+    # snapshot file is the first
+    cp ./files/part.snapshot files/${EPOCH_NOW}.snapshot
+fi
+echo ${EPOCH_NOW} > files/was.epoch
+
+
+# Update link to the latest snapshot file:
+
+sed "s/{EPOCH}/${EPOCH_NOW}/g" index-template.html > ./files/index.html
+
+
+# Remove snapshots except the 5 last:
+
+ls -t1 ./files/*.snapshot | tail -n +5 | while read F
+do
+    rm -f ${F}
+done
