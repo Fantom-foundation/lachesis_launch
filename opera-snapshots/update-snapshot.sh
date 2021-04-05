@@ -61,15 +61,16 @@ JSON
 EPOCH_TO=$((EPOCH_NOW-1))
 export_events ${EPOCH_WAS} ${EPOCH_TO} "$(readlink -f ./files)/snapshot.inc"
 
-if [ -f ./files/${EPOCH_WAS}.snapshot ]
+if [ -f ./files/snapshot.all ]
 then
     # append prev file to the snapshot
-    cp ./files/${EPOCH_WAS}.snapshot ./files/${EPOCH_NOW}.snapshot
-    tail -c +9 ./files/snapshot.inc >> ./files/${EPOCH_NOW}.snapshot
+    tail -c +9 ./files/snapshot.inc >> ./files/snapshot.all
 else
     # snapshot file is the first
-    cp ./files/snapshot.inc files/${EPOCH_NOW}.snapshot
+    cp ./files/snapshot.inc ./files/snapshot.all
 fi
+gzip --keep ./files/snapshot.all
+mv ./files/snapshot.all.gz ./files/${EPOCH_NOW}.snapshot.gz
 echo ${EPOCH_NOW} > files/was.epoch
 
 
@@ -80,7 +81,7 @@ sed "s/{EPOCH}/${EPOCH_NOW}/g" index-template.html > ./files/index.html
 
 # Remove snapshots except the 5 last:
 
-ls -t1 ./files/*.snapshot | tail -n +5 | while read F
+ls -t1 ./files/*.snapshot.gz | tail -n +5 | while read F
 do
     rm -f ${F}
 done
