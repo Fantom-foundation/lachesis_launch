@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 cd $(dirname $0)
-set -ex
+set -e
 
 
 mkdir -p ./files

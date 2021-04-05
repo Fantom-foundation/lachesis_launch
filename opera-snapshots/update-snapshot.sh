@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 cd $(dirname $0)
-set -ex
+set -e
 
 NODE_API=http://localhost:18545
 mkdir -p ./files
@@ -9,9 +9,9 @@ mkdir -p ./files
 # Don't start often than period
 
 PERIOD_SEC=$(( 30*60 ))
-touch -d "${PERIOD_SEC} seconds ago" ./files/part.snapshot
+touch -d "${PERIOD_SEC} seconds ago" ./files/snapshot.inc
 if
-	AGE_SEC=$(( $(date +%s)-$(stat -c %Y ./files/part.snapshot) ))
+	AGE_SEC=$(( $(date +%s)-$(stat -c %Y ./files/snapshot.inc) ))
 	[ ${AGE_SEC} -lt ${PERIOD_SEC} ]
 then
     echo "Snapshot was updated recently. Wait then try again later."
@@ -59,16 +59,16 @@ JSON
 }
 
 EPOCH_TO=$((EPOCH_NOW-1))
-export_events ${EPOCH_WAS} ${EPOCH_TO} "$(readlink -f ./files)/part.snapshot"
+export_events ${EPOCH_WAS} ${EPOCH_TO} "$(readlink -f ./files)/snapshot.inc"
 
 if [ -f ./files/${EPOCH_WAS}.snapshot ]
 then
     # append prev file to the snapshot
     cp ./files/${EPOCH_WAS}.snapshot ./files/${EPOCH_NOW}.snapshot
-    tail -c +9 ./files/part.snapshot >> ./files/${EPOCH_NOW}.snapshot
+    tail -c +9 ./files/snapshot.inc >> ./files/${EPOCH_NOW}.snapshot
 else
     # snapshot file is the first
-    cp ./files/part.snapshot files/${EPOCH_NOW}.snapshot
+    cp ./files/snapshot.inc files/${EPOCH_NOW}.snapshot
 fi
 echo ${EPOCH_NOW} > files/was.epoch
 
