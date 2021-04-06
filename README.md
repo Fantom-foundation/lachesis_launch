@@ -14,7 +14,7 @@
 
 # Overview
 
-This guide is for connecting to the Opera mainnet only.
+This guide is for connecting to the Opera mainnet only. See a short version of this guide [here](./scripts/setup-validator-short.md). 
 
 - RPCAPI Server:[https://rpcapi.fantom.network](https://rpcapi.fantom.network)
 - RPC Server:[https://rpc.fantom.network](https://rpc.fantom.network)

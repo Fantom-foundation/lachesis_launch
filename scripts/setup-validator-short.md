@@ -14,7 +14,7 @@ curl -s https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/mast
 ```
  - Run go-lachesis v1.0.0-rc0 as the default user (or a sudo user):
 ```
-curl -s https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/scripts/readonly-lachesis-1.0.0-rc1.sh | bash
+curl -s https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/scripts/readonly-lachesis-1.0.0-rc0.sh | bash
 ```
 Wait for your node to sync up.
 
