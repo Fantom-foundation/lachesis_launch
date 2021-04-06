@@ -16,17 +16,11 @@
 
 This guide is for connecting to the Opera mainnet only.
 
-Explorer Api Server:[https://api.fantom.network](https://api.fantom.network)
+- RPCAPI Server:[https://rpcapi.fantom.network](https://rpcapi.fantom.network)
+- RPC Server:[https://rpc.fantom.network](https://rpc.fantom.network)
+- SocketIo Server: [https://wsapi.fantom.network/](https://wsapi.fantom.network/)
 
-Explorer SocketIo Server: [https://ws.fantom.network/](https://ws.fantom.network/)
-
-Explorer RPC Server:[https://rpc.fantom.network](https://rpc.fantom.network)
-
-Api Documentation is available [here](https://app.swaggerhub.com/apis/devintegral7/fantom-explorer_api/0.1#/info).
-
-- Please replace http://3.136.216.35:3100 with https://api.fantom.network as the api endpoint.
-
-
+Old Explorer Api Server:[https://api.fantom.network](https://api.fantom.network). Api documentation [here](https://app.swaggerhub.com/apis/devintegral7/fantom-explorer_api/0.1#/info).
 
 ## Installing build tools
 
@@ -68,7 +62,7 @@ mkdir -p $HOME/go/src/github.com/Fantom-foundation
 cd $HOME/go/src/github.com/Fantom-foundation/
 git clone https://github.com/Fantom-foundation/go-lachesis.git
 cd go-lachesis/
-git checkout tags/v0.7.0-rc.1 -b lachesis-v07rc1
+git checkout release/v0.7.0-rc.1
 make build
 ```
 
@@ -144,7 +138,7 @@ abi = JSON.parse('[{"constant":true,"inputs":[],"name":"minDelegation","outputs"
 sfcc = web3.ftm.contract(abi).at("0xfc00face00000000000000000000000000000000")
 ```
 
-The current sfc release is `2.0.4-rc2`. The ABI output available at `./releases/sfc-abi-2.0.4-rc.2.json`.
+The current sfc release is `2.0.4-rc2`. The ABI output available at [SFC 2.0.4-rc2 ABI](./releases/sfc-abi-2.0.4-rc.2.json).
 
 ### Creating a staker
 
