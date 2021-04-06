@@ -1,3 +1,4 @@
+[Short guide](./scripts/setup-validator-short.md)  
 [Install golang](./README.md#install-golang)  
 [Installing build tools](./README.md#installing-build-tools)  
 [Installing go-lachesis](./README.md#installing-go-lachesis)  
@@ -16,7 +17,7 @@ Transferring tokens from ERC20 or BEP2 to mainnet
 
 The Special Fee Contract (SFC) handles the creation of validators and manages the staking logic internally.
 
-The current sfc release is `2.0.4-rc2`. The ABI output available at `./releases/sfc-abi-2.0.4-rc.2.json`.
+The current sfc release is `2.0.4-rc2`. The ABI output available at [SFC 2.0.4-rc2 ABI](./releases/sfc-abi-2.0.4-rc.2.json).
 
 ### Setup mainnet genesis
 
@@ -51,4 +52,3 @@ personal.sendTransaction(tx, "password")
 ```
 
 If you need to disable the node check for the latest version, add `--nocheckversion` to the command line.
-
