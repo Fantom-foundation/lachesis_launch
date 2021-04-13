@@ -4,7 +4,8 @@
 # Bash script to launch a read-only go-opera node
 #######################################
 
-VERSION='1.0.0-rc.1'
+VERSION='release/1.0.0-rc.1'
+NETWORK='testnet.g'
 
 # Update and apt-get install build-essential
 sudo apt-get update
@@ -13,8 +14,7 @@ sudo apt-get install -y build-essential
 
 # Install golang
 wget https://dl.google.com/go/go1.15.10.linux-amd64.tar.gz
-sudo tar -xvf go1.15.10.linux-amd64.tar.gz
-sudo mv go /usr/local
+sudo tar -xvf go1.15.10.linux-amd64.tar.gz -C /usr/local/
 
 # Setup golang environment variables
 export GOROOT=/usr/local/go
@@ -24,12 +24,12 @@ export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 # Checkout and build go-opera
 git clone https://github.com/Fantom-foundation/go-opera.git
 cd go-opera/
-git checkout release/$VERSION
+git checkout $VERSION
 make
 
-# Download genesis file
+# Download the genesis file
 cd build/
-# TODO add genesis file link after the launch
+wget https://opera.fantom.network/$NETWORK
 
 # Start a read-only node to join the selected network
-nohup ./opera --genesis network.g --nousb &
+nohup ./opera --genesis $NETWORK --nousb &
