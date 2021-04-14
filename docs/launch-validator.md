@@ -1,4 +1,4 @@
-# run-opera-validator
+# Run Opera validator
 
 ## 1. Setup an AWS node
 - Ubuntu Server 20.04 LTS 64-bit
