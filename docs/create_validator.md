@@ -46,7 +46,7 @@ Path of the secret key file:
 
 #### Initializing the SFC
 
-Follow instructions in [sfc.md](./sfc.md).
+Follow instructions in [sfc.md](sfc.md).
 
 #### Creating a validator
 
@@ -70,4 +70,4 @@ sfcc.getValidatorID(YOUR_ADDRESS)
 
 ### Startup as a validator
 
-Follow instructions in [launch-validator.md](./scripts/launch-validator.md).
+Follow instructions in [launch-validator.md](launch-validator.md).

@@ -1,6 +1,6 @@
 ## First steps
 
-Follow instructions in [sfc.md](./sfc.md).
+Follow instructions in [sfc.md](sfc.md).
 
 ## SFTM operations
 
