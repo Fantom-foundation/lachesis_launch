@@ -1,173 +1,43 @@
-[Install golang](./README.md#install-golang)  
-[Installing build tools](./README.md#installing-build-tools)  
-[Installing testnet go-lachesis](#installing-testnet-go-lachesis)  
-[Joining the public net](#starting-your-node-and-joining-the-public-testnet)  
-[Creating a new account](#creating-a-new-account)  
-[Adding funds to an account](#adding-funds-to-an-account)  
-[Create a validator on the SFC](#create-a-validator-on-the-sfc)  
-[Startup as a validator](#startup-as-a-validator)  
-[Run validator as pm2 process](#run-validator-as-pm2-process)  
-[Troubleshooting](./README.md#troubleshooting)  
-[Error: insufficient funds for gas * price + value](./README.md#error-insufficient-funds-for-gas--price--value)  
-[Deploy a contract](#deploy-a-contract)
+[Joining the public net](#joining-the-public-net)  
+[Deploy a smart contract](#deploy-a-contract)  
 
-### Overview
+# Overview
 
-This guide is for connecting to the Opera testnet only.
-
-The testnet consists of 3 nodes:
+Opera testnet consists of 3 nodes:
 
 ```
-enode://563b30428f48357f31c9d4906ca2f3d3815d663b151302c1ba9d58f3428265b554398c6fabf4b806a49525670cd9e031257c805375b9fdbcc015f60a7943e427@3.213.142.230:7946
-
-enode://8b53fe4410cde82d98d28697d56ccb793f9a67b1f8807c523eadafe96339d6e56bc82c0e702757ac5010972e966761b1abecb4935d9a86a9feed47e3e9ba27a6@3.227.34.226:7946
-
+enode://563b30428f48357f31c9d4906ca2f3d3815d663b151302c1ba9d58f3428265b554398c6fabf4b806a49525670cd9e031257c805375b9fdbcc015f60a7943e427@3.213.142.230:7946,
+enode://8b53fe4410cde82d98d28697d56ccb793f9a67b1f8807c523eadafe96339d6e56bc82c0e702757ac5010972e966761b1abecb4935d9a86a9feed47e3e9ba27a6@3.227.34.226:7946,
 enode://1703640d1239434dcaf010541cafeeb3c4c707be9098954c50aa705f6e97e2d0273671df13f6e447563e7d3a7c7ffc88de48318d8a3cc2cc59d196516054f17e@52.72.222.228:7946
 ```
 
-Latest sfc commit hash is [463d8b85a74895917d91ab3c25d7b027604c8b32](https://github.com/Fantom-foundation/fantom-sfc/commit/463d8b85a74895917d91ab3c25d7b027604c8b32)
+Testnet Explorer: [testnet explorer](https://explorer.testnet.fantom.network)
 
+Testnet RPC: [testnet rpc](https://rpc.testnet.fantom.network)
 
-Explorer Api Server:[3.213.142.230:6000](http://3.213.142.230:6000)
+## Joining the public net
 
-Explorer SocketIo Server: [3.213.142.230:6001](http://3.213.142.230:6001)
+The testnet has been migrated to go-opera 1.0.0-rc1.
 
-Api Documentation is available [here](https://app.swaggerhub.com/apis/devintegral7/fantom-explorer_api/0.1#/info).
+Join [testnet in go-opera 1.0.0-rc1](https://github.com/Fantom-foundation/lachesis_launch/blob/release/opera-v1.0.0-rc1/docs/setup-readonly-node.sh)
 
-- Please replace http://3.136.216.35:3100 with http://3.213.142.230:6000 as the api endpoint.
-
-
-### Installing testnet go-lachesis
-
-```
-git clone https://github.com/Fantom-foundation/go-lachesis.git
-cd go-lachesis/
-make build
+Checkout and build go-opera
+```git clone https://github.com/Fantom-foundation/go-opera.git
+cd go-opera/
+git checkout release/1.0.0-rc.1
+make
 ```
 
-Confirm your go-lachesis version
-
+Download the genesis file
 ```
-./build/lachesis version
-Go-Lachesis
-Version: 0.7.0-rc.1
+cd build/
+wget https://opera.fantom.network/testnet.g
 ```
 
-### Starting your node and joining the public testnet
+Start a read-only node to join the selected network
 
-```shell script
-cd build
-wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/releases/v0.7.0-rc.1/testnet.toml
+`nohup ./opera --genesis testnet.g --nousb &`
 
-./lachesis --config testnet.toml --nousb --datadir ~/.lachesis/testnet
-```
-
-
-### Creating a new account
-
-First we need to setup a new account to receive funds in;
-
-```
-./lachesis --testnet account new <YOUR IPC ENDPOINT> --datadir ~/.lachesis/testnet
-```
-
-Follow the prompts and supply the password, you will receive output;
-
-```
-Your new key was generated
-
-Public address of the key:   0x
-Path of the secret key file:
-
-- You can share your public address with anyone. Others need it to interact with you.
-- You must NEVER share the secret key with anyone! The key controls access to your funds!
-- You must BACKUP your key file! Without the key, it's impossible to access account funds!
-- You must REMEMBER your password! Without the password, it's impossible to decrypt the key!
-
-```
-
-
-### Adding funds to an account
-
-- Email [contact@fantom.foundation](mailto:contact@fantom.foundation)
-
-
-### Create a validator on the SFC
-
-Attach to your running node
-
-```
-./lachesis --testnet attach <YOUR IPC ENDPOINT> --datadir ~/.lachesis/testnet
-```
-
-Now you have to [initialize contract context](./README.md##init-SFC-contract-context), and when a contract context is created, you can proceed to [creating a staker](./README.md##creating-a-staker).
-
-### Startup as a validator
-
-Stop your current lachesis process
-
-Create an unlock file for the account password
-
-Start the node
-
-```
-./lachesis --config testnet.toml --nousb --validator 0x --unlock 0x --password /path/to/password <YOUR IPC ENDPOINT>
-```
-
-If you need to disable the node check for the latest version, add `--nocheckversion` to the command line.
-
-### Run validator as pm2 process   
-Install nodejs, npm and pm2
-
-```
-sudo apt-get install nodejs npm
-sudo npm i -g pm2
-```
-
-Create a script to run the node
-
-```
-touch runNode.sh
-chmod +x runNode.sh
-```
-
-and put in the following content
-
-```
-#!/bin/sh
-$HOME/go/src/github.com/Fantom-foundation/go-lachesis/build/lachesis --config $HOME/go/src/github.com/Fantom-foundation/go-lachesis/build/testnet.toml --nousb --validator 0x --unlock 0x --password /path/to/password
-```
-
-Create the pm2 config file
-
-```
-touch ecosystem.config.js
-```
-
-and put in the following content
-
-```
-module.exports = { apps : [ { name: "fantom", script: "$HOME/runNode.sh", exec_mode: "fork", exec_interpreter: "bash"} ] }
-```
-
-Start the pm2 process
-
-```
-pm2 start ./ecosystem.config.js
-```
-
-Use following commands
-
-```
-// Check node status
-pm2 status
-
-// Check node logs
-pm2 logs
-
-// Create an autostart script to automatically run the node on server startup
-pm2 save
-```   
 
 ## Deploy a contract
 

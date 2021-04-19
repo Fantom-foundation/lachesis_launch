@@ -5,22 +5,18 @@
 [Creating a new account](#creating-a-new-account)  
 [Adding funds to an account](#adding-funds-to-an-account)  
 [Create a validator on the SFC](#create-a-validator-on-the-sfc)  
-[Startup as a validator](#startup-as-a-validator)  
-[Run validator as pm2 process](#run-validator-as-pm2-process)  
+[Startup as a validator](#start-in-validator-mode)   
 [Troubleshooting](#troubleshooting)  
 [Error: insufficient funds for gas * price + value](#error-insufficient-funds-for-gas--price--value)  
 [Upgrading lachesis](#upgrading-lachesis)  
 
+[Short guide](./scripts/setup-validator-short.md)        
+[Set up validator](./releases/v1.0.0-rc.0/setup_validator.md)
+
 
 # Overview
 
-This guide is for connecting to the Opera mainnet only. See a short version of this guide [here](./scripts/setup-validator-short.md). 
-
-- RPCAPI Server:[https://rpcapi.fantom.network](https://rpcapi.fantom.network)
-- RPC Server:[https://rpc.fantom.network](https://rpc.fantom.network)
-- SocketIo Server: [https://wsapi.fantom.network/](https://wsapi.fantom.network/)
-
-Old Explorer Api Server:[https://api.fantom.network](https://api.fantom.network). Api documentation [here](https://app.swaggerhub.com/apis/devintegral7/fantom-explorer_api/0.1#/info).
+A guide to connect to Opera mainnet.
 
 ## Installing build tools
 
@@ -41,9 +37,14 @@ sudo apt-get install -y build-essential
 
 ### Install golang
 
+
+Upgrade golang
 ```
-wget https://dl.google.com/go/go1.13.3.linux-amd64.tar.gz
-sudo tar -xvf go1.13.3.linux-amd64.tar.gz
+mkdir ~/temp
+cd ~/temp
+sudo rm -rf /usr/local/go/
+wget https://dl.google.com/go/go1.15.10.linux-amd64.tar.gz
+sudo tar -xvf go1.15.10.linux-amd64.tar.gz
 sudo mv go /usr/local
 ```
 
@@ -61,8 +62,9 @@ export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 mkdir -p $HOME/go/src/github.com/Fantom-foundation
 cd $HOME/go/src/github.com/Fantom-foundation/
 git clone https://github.com/Fantom-foundation/go-lachesis.git
+git clone https://github.com/Fantom-foundation/go-lachesis.git
 cd go-lachesis/
-git checkout release/v0.7.0-rc.1
+git checkout release/1.0.0-rc.0
 make build
 ```
 
@@ -71,23 +73,15 @@ Confirm your go-lachesis version
 ```
 ./build/lachesis version
 Go-Lachesis
-Version: 0.7.0-rc.1
+Version: 1.0.0-rc.0
 ```
 
 ## Joining the public mainnet
 
-The default genesis config is located in `releases` directory by tags, for example `releases/v0.7.0-rc.1/mainnet.toml`.
-Download the last genesis config `mainnet.toml`:
-
-```shell script
-cd $HOME/go/src/github.com/Fantom-foundation/go-lachesis/build/
-wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/releases/v0.7.0-rc.1/mainnet.toml
-```
-
 Start your node
 
 ```
-./lachesis --config mainnet.toml --nousb
+nohup ./lachesis --nousb &
 ```
 
 If you need to disable the node check for the latest version, add `--nocheckversion` to the command line.
@@ -165,7 +159,7 @@ When tx gets confirmed, should be non-zero
 sfcc.getStakerID(YOUR_ADDRESS)
 ```
 
-## Startup as a validator
+## Start in validator mode
 
 Stop your current lachesis process
 
@@ -174,66 +168,7 @@ Create an unlock file for the account password
 Start the node
 
 ```
-./lachesis --config mainnet.toml --nousb --validator 0x --unlock 0x --password /path/to/password
-```
-
-## Run validator as pm2 process
-
-Using pm2 is Optional. If your node is stopped, pm2 may turn your node on right away, and it's not recommended.
-Make sure to run in non-validate node to sync up the latest events and event blocks first. Once synced up, you can relaunch your node in validator mode.
-
-If you want to process with pm2, continue with the following steps.
-
-Install nodejs, npm and pm2
-
-```
-sudo apt-get install nodejs npm
-sudo npm i -g pm2
-```
-
-Create a script to run the node
-
-```
-touch runNode.sh
-chmod +x runNode.sh
-```
-
-and put in the following content
-
-```
-#!/bin/sh
-$HOME/go/src/github.com/Fantom-foundation/go-lachesis/build/lachesis --config $HOME/go/src/github.com/Fantom-foundation/go-lachesis/build/mainnet.toml --nousb --validator 0x --unlock 0x --password /path/to/password
-```
-
-Create the pm2 config file
-
-```
-touch ecosystem.config.js
-```
-
-and put in the following content
-
-```
-module.exports = { apps : [ { name: "fantom", script: "$HOME/runNode.sh", exec_mode: "fork", exec_interpreter: "bash"} ] }
-```
-
-Start the pm2 process
-
-```
-pm2 start ./ecosystem.config.js
-```
-
-Use following commands
-
-```
-// Check node status
-pm2 status
-
-// Check node logs
-pm2 logs
-
-// Create an autostart script to automatically run the node on server startup
-pm2 save
+./lachesis --nousb --validator 0x --unlock 0x --password /path/to/password
 ```
 
 ## Troubleshooting
@@ -252,31 +187,7 @@ If sufficient Balance, the local DB and state have not yet synced. Stop and rest
 
 ## Upgrading lachesis
 
-Switch to lachesis working directory
-
-```
-cd $HOME/go/src/github.com/Fantom-foundation/go-lachesis
-```
-Update and build latest version
-
-```
-git pull origin master
-make build
-```
-
-Build output can be found in ./build folder
-Switch to build directory and remove previous genesis
-
-```
-rm $HOME/go/src/github.com/Fantom-foundation/go-lachesis/build/*.toml
-rm -r $HOME/.lachesis/*-ldb
-```
-Deploy new genesis and start
-
-```
-wget https://raw.githubusercontent.com/Fantom-foundation/lachesis_launch/master/mainnet.toml
-./lachesis --config mainnet.toml --nousb --validator 0x --unlock 0x --password /path/to/password
-```
+see [Upgrade to 1.0.0-rc0](./releases/v1.0.0-rc.0/upgrade_validator.md)
 
 ## Public network deploy
 
