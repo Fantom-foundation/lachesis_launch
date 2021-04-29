@@ -5,7 +5,10 @@
 #######################################
 
 VERSION='release/1.0.0-rc.1'
-NETWORK='testnet.g'
+# Pick a file for your network
+# The file for mainnet is mainnet.g
+# File file for public testnet is testnet.g
+NETWORK='mainnet.g'
 
 # Update and apt-get install build-essential
 sudo apt-get update
