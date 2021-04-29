@@ -5,7 +5,10 @@
 #######################################
 
 DATADIR=~/.opera
-HISTORY_FILE='testnet-evm-history-2457.gz'
+# Pick a file for your network
+# The file for mainnet is mainnet-evm-history-5576.gz
+# File file for public testnet is testnet-evm-history-2457.gz
+HISTORY_FILE='mainnet-evm-history-5576.gz'
 
 # Download the EVM history file
 wget https://opera.fantom.network/$HISTORY_FILE
