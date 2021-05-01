@@ -64,5 +64,5 @@ echo 0x$(ls ~/.opera/keystore/validator | head -1)
 - Then run the validator node:
 
 ```shell script
-nohup ./build/opera --genesis ~/.opera/genesis.g --nousb --validator.pubkey ID --validator.pubkey 0xPubkey --validator.password /path/to/password &
+nohup ./build/opera --genesis ~/.opera/genesis.g --nousb --validator.id ID --validator.pubkey 0xPubkey --validator.password /path/to/password &
 ```

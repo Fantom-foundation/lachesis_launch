@@ -1,5 +1,7 @@
 ## First steps
 
+https://github.com/Fantom-foundation/opera-sfc/wiki/
+
 ### Attach to your node 
 Attach to a running node. You may need to specify your specific configuration.
 
