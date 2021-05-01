@@ -5,7 +5,6 @@
 - We would recommend the following (or better): 
 ```
 m5.xlarge (4 CPUs and 16GB), 500GB SSD
-r5.large (2 CPUs and 16GB), 500GB SSD
 ```
  
 - Open up port 22 for SSH, and port 5050 for both TCP and UDP traffic
@@ -27,7 +26,7 @@ killall opera
 - Then run your validator node:
 
 ```shell script
-nohup opera --genesis $NETWORK --nousb --validator.pubkey ID --validator.pubkey 0xPubkey --validator.password /path/to/password &
+nohup opera --genesis $NETWORK --nousb --validator.id ID --validator.pubkey 0xPubkey --validator.password /path/to/password &
 ```
 
 It's complete. Your node is running!
