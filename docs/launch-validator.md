@@ -10,7 +10,7 @@ m5.xlarge (4 CPUs and 16GB), 500GB SSD
 - Open up port 22 for SSH, and port 5050 for both TCP and UDP traffic
 
 ## 2. Launch a read-only Opera node
- - Follow instructions in [launching go-opera readonly node](./setup-readonly-node.sh)
+ - Follow instructions in [launching go-opera readonly node](setup-readonly-node.sh)
 
 Wait for your node to sync up
 
