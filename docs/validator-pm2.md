@@ -23,7 +23,8 @@ and put in the following content
 
 ```shell script
 #!/bin/sh
-opera --nousb --validator 0xAddress --unlock 0xAddress --password /path/to/password
+opera --genesis $NETWORK --nousb --validator.id ID --validator.pubkey 0xPubkey --validator.password /path/to/password
+
 ```
 
 Create the pm2 config file

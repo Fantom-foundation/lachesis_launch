@@ -1,6 +1,6 @@
 ### Overview
 
-The latest version of a blockchain node for the Opera network is `go-opera 1.0.0-rc1`. The previous version is the `go-lachesis 1.0.0-rc0`.
+The latest version of a blockchain node for the Opera network is `go-opera 1.0.0-rc2`. The previous version is the `go-lachesis 1.0.0-rc0`.
 
 ### Instructions for a validator
 

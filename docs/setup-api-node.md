@@ -1,7 +1,7 @@
 # Set up API node
 
 ## 1. Launch a read-only Opera node
- - Follow instructions in [launching go-opera readonly node](./setup-readonly-node.sh)
+ - Follow instructions in [launching go-opera readonly node](setup-readonly-node.sh)
 
 ## 2. Enabled API endpoints
 

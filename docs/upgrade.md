@@ -23,7 +23,7 @@ which should be used as a genesis file specified with `--genesis` flag.
 ```shell script
 git clone https://github.com/Fantom-foundation/go-opera.git
 cd go-opera/
-git checkout release/1.0.0-rc.1
+git checkout release/1.0.0-rc.2
 make
 ```
 
@@ -32,7 +32,7 @@ make
 ```
 ./build/opera version
 Go-Opera
-Version: 1.0.0-rc.1
+Version: 1.0.0-rc.2
 ```
 
 ### Start the read-only node
@@ -64,5 +64,5 @@ echo 0x$(ls ~/.opera/keystore/validator | head -1)
 - Then run the validator node:
 
 ```shell script
-nohup ./build/opera --genesis ~/.opera/genesis.g --nousb --validator.pubkey ID --validator.pubkey 0xPubkey --validator.password /path/to/password &
+nohup ./build/opera --genesis ~/.opera/genesis.g --nousb --validator.id ID --validator.pubkey 0xPubkey --validator.password /path/to/password &
 ```
