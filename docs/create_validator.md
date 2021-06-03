@@ -55,7 +55,7 @@ Create validator
 YOUR_ADDRESS = "0xfE19B9Ae8b056eE11d20A8F530326a2C3b99ADca"
 YOUR_PUBKEY = "0xc004b81423f875a056d31e8779e2e9fb88f63e826bbe25a15dd00327622828a951aa5f7cc7ffd027b34b25a53ab64d1fbf6ccc2685ef893f36f814ee0d6b90cc5f39"
 personal.unlockAccount(YOUR_ADDRESS, "password", 60) // make sure account is unlocked
-tx = sfcc.createValidator(YOUR_PUBKEY, {from:YOUR_ADDRESS, value: web3.toWei("3175000.0", "ftm")}) // 3175000.0 FTM
+tx = sfcc.createValidator(YOUR_PUBKEY, {from:YOUR_ADDRESS, value: web3.toWei("1000000.0", "ftm")}) // 1000000.0 FTM
 ```
 
 Check the tx is confirmed
