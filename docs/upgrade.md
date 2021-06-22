@@ -1,29 +1,18 @@
-This document describes the steps to upgrade a node running go-lachesis v1.0.0-rc0 to the go-opera v1.0.0-rc1
+This document describes the steps to upgrade a node running go-opera v1.0.0-rc2 to the go-opera v1.0.1-rc1
 
 ### Stop the node
 
-- Make sure to stop the go-lachesis node first and that the node is not restarted before processing the next steps
+- Make sure to stop the go-opera node first and that the node is not restarted before processing the next steps
 
 ```shell script
-killall lachesis
+killall opera
 ```
 
-### Copy data to the new datadir
+### Update and build go-opera
 
 ```shell script
-cp -rf  ~/.lachesis/opera ~/.opera
-```
-
-> Note: if your go-lachesis datadir is `/path/to/lachesis-datadir`, then it will have `opera` subdirectory after go-opera
-migration is complete. You can use this subdirectory as your go-opera datadir. Also this subdirectory contains `genesis.g` file
-which should be used as a genesis file specified with `--genesis` flag.
-
-### Checkout and build go-opera
-
-```shell script
-git clone https://github.com/Fantom-foundation/go-opera.git
 cd go-opera/
-git checkout release/1.0.0-rc.2
+git checkout release/1.0.1-rc.1
 make
 ```
 
@@ -32,7 +21,7 @@ make
 ```
 ./build/opera version
 Go-Opera
-Version: 1.0.0-rc.2
+Version: 1.0.1-rc.1
 ```
 
 ### Start the read-only node
@@ -54,12 +43,6 @@ killall opera
 ```
 
 - Wait until the node has stopped
-
-- Retrieve the validator pubkey:
-
-```shell script
-echo 0x$(ls ~/.opera/keystore/validator | head -1)
-```
 
 - Then run the validator node:
 
