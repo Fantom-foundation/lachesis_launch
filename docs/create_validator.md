@@ -33,7 +33,7 @@ Follow the prompts and supply the password, you will receive output;
 ```
 Your new key was generated
 
-Public key:                  0xPubkey
+Public key:                  0xYourPubkey
 Path of the secret key file:
 
 - You can share your public key with anyone. Others need it to validate messages from you.
@@ -51,12 +51,20 @@ Follow instructions in [sfc.md](sfc.md).
 #### Creating a validator
 
 Create validator
+
+- Insert the validator public key with **quotes** instead of "0xYourPubkey". Example: "0xc004b81423f875a056d31e8779e2e9fb88f63e826bbe25a15dd00327622828a951aa5f7cc7ffd027b34b25a53ab64d1fbf6ccc2685ef893f36f814ee0d6b90cc5f39"  
+Ensure that you specify a correct public key, as it's impossible to change afterwards!
+
+- Insert your address with **quotes** instead of "0xYourAddress". Example: "0xfE19B9Ae8b056eE11d20A8F530326a2C3b99ADca"  
+This address will be used for validator authentication in smart contract (such as collecting rewards or voting in the Governance contract)
+
+- Substitute validator self-stake amount in FTM instead of 1000000.0
+
 ```
-YOUR_ADDRESS = "0xfE19B9Ae8b056eE11d20A8F530326a2C3b99ADca"
-YOUR_PUBKEY = "0xc004b81423f875a056d31e8779e2e9fb88f63e826bbe25a15dd00327622828a951aa5f7cc7ffd027b34b25a53ab64d1fbf6ccc2685ef893f36f814ee0d6b90cc5f39"
-personal.unlockAccount(YOUR_ADDRESS, "password", 60) // make sure account is unlocked
-tx = sfcc.createValidator(YOUR_PUBKEY, {from:YOUR_ADDRESS, value: web3.toWei("1000000.0", "ftm")}) // 1000000.0 FTM
+personal.unlockAccount("0xYourAddress", "password", 60) // make sure account is unlocked
+tx = sfcc.createValidator("0xYourPubkey", {from:"0xYourAddress", value: web3.toWei("1000000.0", "ftm")}) // 1000000.0 FTM
 ```
+
 
 Check the tx is confirmed
 ```
@@ -65,7 +73,7 @@ ftm.getTransactionReceipt(tx)
 
 When tx gets confirmed, should be non-zero
 ```
-sfcc.getValidatorID(YOUR_ADDRESS)
+sfcc.getValidatorID("0xYourAddress")
 ```
 
 ### Startup as a validator
