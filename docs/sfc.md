@@ -31,5 +31,5 @@ sfcc.lastValidatorID() // if everything is all right, will return a non-zero val
 ### Unlocking account
 
 ```js
-personal.unlockAccount(YOUR_ADDRESS, "password", 60)
+personal.unlockAccount("0xYourAddress", "password", 60)
 ```
