@@ -1,4 +1,4 @@
-This document describes the steps to upgrade a node running go-opera v1.0.0-rc2 to the go-opera v1.0.1-rc1
+This document describes the steps to upgrade a node running go-opera v1.0.1-rc.1 to the go-opera v1.0.2-rc.3
 
 ### Stop the node
 
@@ -12,7 +12,7 @@ killall opera
 
 ```shell script
 cd go-opera/
-git checkout release/1.0.1-rc.1
+git checkout release/1.0.2-rc.3
 make
 ```
 
@@ -21,13 +21,13 @@ make
 ```
 ./build/opera version
 Go-Opera
-Version: 1.0.1-rc.1
+Version: 1.0.2-rc.3
 ```
 
 ### Start the read-only node
 
 ```shell script
-./build/opera --genesis ~/.opera/genesis.g --nousb
+./build/opera --genesis ~/.opera/genesis.g
 ```
 
 ### Startup as a validator
@@ -47,5 +47,5 @@ killall opera
 - Then run the validator node:
 
 ```shell script
-nohup ./build/opera --genesis ~/.opera/genesis.g --nousb --validator.id ID --validator.pubkey 0xPubkey --validator.password /path/to/password &
+nohup ./build/opera --genesis ~/.opera/genesis.g --validator.id ID --validator.pubkey 0xPubkey --validator.password /path/to/password &
 ```

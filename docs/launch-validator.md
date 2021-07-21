@@ -26,7 +26,7 @@ killall opera
 - Then run your validator node:
 
 ```shell script
-nohup opera --genesis $NETWORK --nousb --validator.id ID --validator.pubkey 0xPubkey --validator.password /path/to/password &
+nohup opera --genesis $NETWORK --validator.id ID --validator.pubkey 0xPubkey --validator.password /path/to/password &
 ```
 
 It's complete. Your node is running!

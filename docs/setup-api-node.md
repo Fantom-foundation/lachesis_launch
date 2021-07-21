@@ -10,7 +10,7 @@ By default, the only way to send API requests to the node is via `.ipc` file ins
 To enable HTTP and/or WS endpoints, use:
 
 ```shell script
-opera --genesis $NETWORK --nousb --http --ws
+opera --genesis $NETWORK --http --ws
 ```
 
 The default ports for HTTP and WS are 18545 and 18546. Override them with `--http.port` and `--ws.port` flags if needed.
@@ -18,13 +18,13 @@ The default ports for HTTP and WS are 18545 and 18546. Override them with `--htt
 By default, the endpoints are accessible only by localhost. To allow external requests, use:
 
 ```shell script
-opera --genesis $NETWORK --nousb --http --http.vhosts="*" --http.corsdomain="*" --ws --ws.origins="*"
+opera --genesis $NETWORK --http --http.vhosts="*" --http.corsdomain="*" --ws --ws.origins="*"
 ```
 
 The default namepsaces are limited to `ftm,eth,abft,dag,rpc,web3`. To allow all the namepsaces, use:
 
 ```shell script
-opera --genesis $NETWORK --nousb --http --http.api="ftm,eth,debug,admin,web3,personal,net,txpool,sfc" --ws --ws.api="ftm,eth,debug,admin,web3,personal,net,txpool,sfc"
+opera --genesis $NETWORK --http --http.api="ftm,eth,debug,admin,web3,personal,net,txpool,sfc" --ws --ws.api="ftm,eth,debug,admin,web3,personal,net,txpool,sfc"
 ```
 
 Pay attention that the full list of namepsaces provides direct access to the node.  
