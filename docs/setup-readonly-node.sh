@@ -4,7 +4,7 @@
 # Bash script to launch a read-only go-opera node
 #######################################
 
-VERSION='release/1.0.1-rc.1'
+VERSION='release/1.0.2-rc.3'
 # Pick a file for your network
 # The file for mainnet is mainnet.g
 # File file for public testnet is testnet.g
@@ -35,4 +35,4 @@ cd build/
 wget https://opera.fantom.network/$NETWORK
 
 # Start a read-only node to join the selected network
-nohup ./opera --genesis $NETWORK --nousb &
+nohup ./opera --genesis $NETWORK &

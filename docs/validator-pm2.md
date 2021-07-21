@@ -23,7 +23,7 @@ and put in the following content
 
 ```shell script
 #!/bin/sh
-opera --genesis $NETWORK --nousb --validator.id ID --validator.pubkey 0xPubkey --validator.password /path/to/password
+opera --genesis $NETWORK --validator.id ID --validator.pubkey 0xPubkey --validator.password /path/to/password
 
 ```
 
