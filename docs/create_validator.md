@@ -11,7 +11,7 @@ Follow the prompts and supply the password, you will receive output;
 ```
 Your new key was generated
 
-Public address of the key:   0xAddress
+Public address of the key:   0xYourAddress
 Path of the secret key file:
 
 - You can share your public address with anyone. Others need it to interact with you.
