@@ -58,11 +58,11 @@ Ensure that you specify a correct public key, as it's impossible to change after
 - Insert your address with **quotes** instead of "0xYourAddress". Example: "0xfE19B9Ae8b056eE11d20A8F530326a2C3b99ADca"  
 This address will be used for validator authentication in smart contract (such as collecting rewards or voting in the Governance contract)
 
-- Substitute validator self-stake amount in FTM instead of 1000000.0
+- Substitute validator self-stake amount in FTM instead of 500000.0
 
 ```
 personal.unlockAccount("0xYourAddress", "password", 60) // make sure account is unlocked
-tx = sfcc.createValidator("0xYourPubkey", {from:"0xYourAddress", value: web3.toWei("1000000.0", "ftm")}) // 1000000.0 FTM
+tx = sfcc.createValidator("0xYourPubkey", {from:"0xYourAddress", value: web3.toWei("500000.0", "ftm")}) // 500000.0 FTM
 ```
 
 
