@@ -10,7 +10,7 @@ m5.xlarge (4 CPUs and 16GB), 500GB SSD
 - Open up port 22 for SSH, and port 5050 for both TCP and UDP traffic
 
 ## 2. Launch a read-only Opera node
- - Follow instructions in [launching go-opera readonly node](setup-readonly-node.sh)
+ - Follow instructions in [launching go-opera readonly node](setup-readonly-node.sh). We don't recommend using snapsync for a validator datadir.
 
 Wait for your node to sync up
 
@@ -26,7 +26,7 @@ killall opera
 - Then run your validator node:
 
 ```shell script
-nohup opera --genesis $GENESIS --syncmode $SYNCMODE --validator.id ID --validator.pubkey 0xPubkey --validator.password /path/to/password &
+nohup opera --genesis $GENESIS --syncmode full --validator.id ID --validator.pubkey 0xPubkey --validator.password /path/to/password &
 ```
 , where:
 - `ID` is your validator ID (e.g. 25)
