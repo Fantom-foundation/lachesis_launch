@@ -4,11 +4,11 @@
 # Bash script to launch a read-only go-opera node
 #######################################
 
-VERSION='release/1.0.2-rc.5'
-# Pick a file for your network
-# The file for mainnet is mainnet.g
-# File file for public testnet is testnet.g
-NETWORK='mainnet.g'
+VERSION='feature/customizable-genesis-file'
+# Pick a genesis file and syncmode for your network in ./genesis-files.md
+GENESIS='testnet-6226-no-mpt.g'
+# snap or full
+SYNCMODE=snap
 
 # Update and apt-get install build-essential
 sudo apt-get update
@@ -25,14 +25,14 @@ export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
 # Checkout and build go-opera
-git clone https://github.com/Fantom-foundation/go-opera.git
+git clone https://github.com/uprendis/go-opera.git
 cd go-opera/
 git checkout $VERSION
 make
 
 # Download the genesis file
 cd build/
-wget https://opera.fantom.network/$NETWORK
+wget https://opera.fantom.network/$GENESIS
 
 # Start a read-only node to join the selected network
-nohup ./opera --genesis $NETWORK &
+nohup ./opera --genesis $GENESIS --syncmode $SYNCMODE &
