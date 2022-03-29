@@ -1,6 +1,6 @@
 ### Overview
 
-The latest version of a blockchain node for the Opera network is `go-opera 1.0.2-rc.5`. The previous version is the `go-opera 1.0.1-rc.1`.
+The latest version of a blockchain node for the Opera network is `go-opera 1.1.0-rc.4`. The previous version is the `go-opera 1.0.2-rc.5`.
 
 ### Instructions for a validator
 

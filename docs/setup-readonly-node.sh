@@ -4,7 +4,7 @@
 # Bash script to launch a read-only go-opera node
 #######################################
 
-VERSION='release/1.0.2-rc.5'
+VERSION='release/1.1.0-rc.4'
 # Pick a file for your network
 # The file for mainnet is mainnet.g
 # File file for public testnet is testnet.g
