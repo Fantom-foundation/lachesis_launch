@@ -1,6 +1,6 @@
 ### Overview
 
-The latest version of a blockchain node for the Opera network is `go-opera 1.1.0-rc.3`. The previous version is the `go-opera 1.0.2`.
+The latest version of a blockchain node for the Opera network is `go-opera 1.1.1-rc.1`. The oldest supported version is `go-opera 1.1.0-rc.4`.
 
 ### Instructions for a validator
 
@@ -17,7 +17,6 @@ The latest version of a blockchain node for the Opera network is `go-opera 1.1.0
 
 1. [Launching go-opera readonly node](docs/setup-readonly-node.sh)
 2. [Launching go-opera API node](docs/setup-api-node.md)
-3. [Importing the previous EVM history for an archival node](docs/import-evm-history.sh)
 
 ### Instructions for launching a private network
 
