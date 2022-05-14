@@ -5,8 +5,8 @@
 #######################################
 
 VERSION='feature/customizable-genesis-file'
-# Pick a genesis file and syncmode for your network in ./genesis-files.md
-GENESIS='testnet-6226-no-mpt.g'
+# Pick a genesis file for your network in ./genesis-files.md
+GENESIS='mainnet-109331-no-mpt.g'
 # snap or full
 SYNCMODE=snap
 
@@ -35,4 +35,5 @@ cd build/
 wget https://opera.fantom.network/$GENESIS
 
 # Start a read-only node to join the selected network
-nohup ./opera --genesis $GENESIS --syncmode $SYNCMODE &
+# Substitute amount of available RAM for best performance
+nohup ./opera --genesis $GENESIS --syncmode $SYNCMODE --cache 4000 &
