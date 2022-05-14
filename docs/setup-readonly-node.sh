@@ -36,4 +36,5 @@ wget https://opera.fantom.network/$GENESIS
 
 # Start a read-only node to join the selected network
 # Substitute amount of available RAM for best performance
+# --genesis flag is mandatory for first launch and optional otherwise
 nohup ./opera --genesis $GENESIS --syncmode $SYNCMODE --cache 4000 &
