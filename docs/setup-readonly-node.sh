@@ -6,9 +6,9 @@
 
 VERSION='release/1.1.1-rc.1'
 # Pick a genesis file for your network in ./genesis-files.md
-GENESIS='mainnet-109331-no-mpt.g'
+GENESIS='mainnet-109331-pruned-mpt.g'
 # snap or full
-SYNCMODE=snap
+SYNCMODE=full
 
 # Update and apt-get install build-essential
 sudo apt-get update

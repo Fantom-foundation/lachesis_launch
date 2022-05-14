@@ -35,4 +35,6 @@ nohup opera --genesis $GENESIS --syncmode full --validator.id ID --validator.pub
 - `8000` is amount of memory allocated for go-opera
 If you omitted the `--validator.password` flag, then you will be prompted for the password in terminal.
 
+It's recommended to use only fullsync mode for validator node.
+
 It's complete. Your node is running!
