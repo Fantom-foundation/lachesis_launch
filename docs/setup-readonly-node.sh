@@ -16,7 +16,7 @@ sudo apt-get -y upgrade
 sudo apt-get install -y build-essential
 
 # Install golang
-wget https://dl.google.com/go/go1.15.10.linux-amd64.tar.gz
+wget https://go.dev/dl/go1.18.2.linux-amd64.tar.gz
 sudo tar -xvf go1.15.10.linux-amd64.tar.gz -C /usr/local/
 
 # Setup golang environment variables
@@ -25,14 +25,14 @@ export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
 # Checkout and build go-opera
-git clone https://github.com/uprendis/go-opera.git
+git clone https://github.com/Fantom-foundation/go-opera.git
 cd go-opera/
 git checkout $VERSION
 make
 
 # Download the genesis file
 cd build/
-wget https://opera.fantom.network/$GENESIS
+wget https://download.fantom.network/$GENESIS
 
 # Start a read-only node to join the selected network
 # Substitute amount of available RAM for best performance
