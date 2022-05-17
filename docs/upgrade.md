@@ -1,4 +1,4 @@
-This document describes the steps to upgrade a node running go-opera v1.0.2 to the go-opera v1.1.0-rc.3
+This document describes the steps to upgrade a node running go-opera v1.1.0 to the go-opera v1.1.1-rc.1
 
 ### Stop the node
 
@@ -12,7 +12,7 @@ killall opera
 
 ```shell script
 cd go-opera/
-git checkout feature/customizable-genesis-file
+git checkout release/1.1.1-rc.1
 make
 ```
 
@@ -21,7 +21,7 @@ make
 ```
 ./build/opera version
 Go-Opera
-Version: 1.1.0-rc.3
+Version: 1.1.1-rc.1
 ```
 
 ### Start the read-only node

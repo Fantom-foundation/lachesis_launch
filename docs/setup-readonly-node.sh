@@ -31,6 +31,8 @@ git checkout $VERSION
 make
 
 # Download the genesis file
+# Note: In a case of an upgrade from a previous node version,
+# downloading new genesis file is not necessary. Skip this step and omit --genesis flag
 cd build/
 wget https://download.fantom.network/$GENESIS
 
