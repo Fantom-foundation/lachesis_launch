@@ -13,8 +13,8 @@
 
 | Name                                                                                   | Epoch | Block   | Fullsync | Snapsync | Blocks history | Starting EVM history | Size     |
 | -------------------------------------------------------------------------------------- | ----- | ------- | -------- | -------- | -------------- | -------------------- | -------- |
-| [testnet-2458-pruned-mpt.g](https://download.fantom.network/testnet-2457-pruned-mpt.g) | 2458  | 479326  | Yes      | No       | Full           | Pruned (one block)   | 81.5 MB  |
-| [testnet-2458-full-mpt.g](https://download.fantom.network/testnet-2457-full-mpt.g)     | 2458  | 479326  | Yes      | No       | Full           | Full                 | 977.7 MB |
+| [testnet-2458-pruned-mpt.g](https://download.fantom.network/testnet-2458-pruned-mpt.g) | 2458  | 479326  | Yes      | No       | Full           | Pruned (one block)   | 81.5 MB  |
+| [testnet-2458-full-mpt.g](https://download.fantom.network/testnet-2458-full-mpt.g)     | 2458  | 479326  | Yes      | No       | Full           | Full                 | 977.7 MB |
 | [testnet-6226-no-history.g](https://download.fantom.network/testnet-6226-no-history.g) | 6226  | 7650765 | No       | Yes      | 7650765+       | No                   | 1.7 KB   |
 | [testnet-6226-no-mpt.g](https://download.fantom.network/testnet-6226-no-mpt.g)         | 6226  | 7650765 | No       | Yes      | Full           | No                   | 2.0 GB   |
 | [testnet-6226-pruned-mpt.g](https://download.fantom.network/testnet-6226-pruned-mpt.g) | 6226  | 7650765 | Yes      | Yes      | Full           | Pruned (one block)   | 3.2 GB   |
