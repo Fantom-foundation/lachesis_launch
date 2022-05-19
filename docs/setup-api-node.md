@@ -28,4 +28,4 @@ opera --genesis $NETWORK --http --http.api="ftm,eth,debug,admin,web3,personal,ne
 ```
 
 Pay attention that the full list of namepsaces provides direct access to the node.  
-Allow as fewer namepsaces as possible and limit access to as fewer hosts as possible.
+Allow as fewer namespaces as possible and limit access to as fewer hosts as possible.
