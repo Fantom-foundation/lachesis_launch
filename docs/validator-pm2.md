@@ -23,8 +23,7 @@ and put in the following content
 
 ```shell script
 #!/bin/sh
-opera --genesis $NETWORK --validator.id ID --validator.pubkey 0xPubkey --validator.password /path/to/password
-
+opera --genesis $GENESIS --syncmode full --validator.id ID --validator.pubkey 0xPubkey --validator.password /path/to/password
 ```
 
 Create the pm2 config file

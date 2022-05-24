@@ -6,7 +6,7 @@ https://github.com/Fantom-foundation/go-opera/tree/63b18defec34fe698430268aa7636
 Also check out the demo scripts for fakenet: https://github.com/Fantom-foundation/go-opera/tree/63b18defec34fe698430268aa763658368922749/demo
 
 All the instructions for Opera mainnet/testnet will apply to the fakenet with
-the only exception that you have to use `--fakenet i/N` flag instead of `--genesis $NETWORK`.
+the only exception that you have to use `--fakenet i/N` flag instead of `--genesis $GENESIS`.
 
 ## Launch a production private network
 
