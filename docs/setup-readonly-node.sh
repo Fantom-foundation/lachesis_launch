@@ -13,7 +13,7 @@ SYNCMODE=full
 # Update and apt-get install build-essential
 sudo apt-get update
 sudo apt-get -y upgrade
-sudo apt-get install -y build-essential
+sudo apt-get install -y build-essential git
 
 # Install golang
 wget https://go.dev/dl/go1.18.2.linux-amd64.tar.gz
