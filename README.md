@@ -10,7 +10,7 @@ With `go-opera v1.1.1-rc.1`, new read nodes can use new customizable genesis fil
 The upgrade is highly recommended for API nodes. 
 The upgrade is not recommended for validator nodes yet.
 
-Note that, if you're running a 1.1.0-rc.X, after the upgrade to 1.1.0-rc.1, it won't be possible to use the old genesis files (mainnet.g and testnet.g). 
+Note that, if you're running a 1.1.0-rc.X, after the upgrade to 1.1.1-rc.1, it won't be possible to use the old genesis files (mainnet.g and testnet.g). 
 Instead, you can omit --genesis flag and you don't need to download a new genesis file (as the file is no longer mandatory for already initialized nodes).
 
 ### Instructions for a read node
