@@ -4,7 +4,7 @@
 # Bash script to launch a read-only go-opera node
 #######################################
 
-VERSION='release/1.1.1-rc.1'
+VERSION='release/1.1.1-rc.2'
 # Pick a genesis file for your network in ./genesis-files.md
 GENESIS='mainnet-109331-pruned-mpt.g'
 # snap or full
