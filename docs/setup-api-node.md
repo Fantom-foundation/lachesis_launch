@@ -21,11 +21,11 @@ By default, the endpoints are accessible only by localhost. To allow external re
 opera --genesis $GENESIS --syncmode $SYNCMODE --http --http.vhosts="*" --http.corsdomain="*" --ws --ws.origins="*"
 ```
 
-The default namepsaces are limited to `ftm,eth,abft,dag,rpc,web3`. To allow all the namepsaces, use:
+The default namespaces are limited to `ftm,eth,abft,dag,rpc,web3`. To allow all the namespaces, use:
 
 ```shell script
 opera --genesis $GENESIS --syncmode $SYNCMODE --http --http.api="ftm,eth,debug,admin,web3,personal,net,txpool,sfc" --ws --ws.api="ftm,eth,debug,admin,web3,personal,net,txpool,sfc"
 ```
 
-Pay attention that the full list of namepsaces provides direct access to the node.  
-Allow as fewer namepsaces as possible and limit access to as fewer hosts as possible.
+Pay attention that the full list of namespaces provides direct access to the node.  
+Allow as fewer namespaces as possible and limit access to as fewer hosts as possible.
