@@ -18,12 +18,14 @@ Read node can use `go-opera v1.1.1-rc.2` in either snap sync or full sync mode.
 
 ### Instructions for an API node
 
-API node is recommended to use `go-opera v1.1.1-rc.2` and run in full sync mode.
+API node is recommended to use `go-opera v1.1.1-rc.2` in full sync mode.
 
 1. [Launching go-opera readonly node](docs/setup-readonly-node.sh)
 2. [Launching go-opera API node](docs/setup-api-node.md)
 
 ### Instructions for a validator
+
+Validator node is recommended to use `go-opera v1.1.1-rc.2` in full sync mode.
 
 1. [Launching go-opera readonly node](docs/setup-readonly-node.sh)
 2. [Creation of a validator](docs/create_validator.md)
