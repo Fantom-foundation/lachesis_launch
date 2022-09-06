@@ -19,11 +19,11 @@ touch runNode.sh
 chmod +x runNode.sh
 ```
 
-and put in the following content
+and put in the following content with Opera flags
 
 ```shell script
 #!/bin/sh
-opera --genesis $GENESIS --syncmode full --validator.id ID --validator.pubkey 0xPubkey --validator.password /path/to/password
+opera your-flags
 ```
 
 Create the pm2 config file

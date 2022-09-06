@@ -10,9 +10,11 @@ m5.xlarge (4 CPUs and 16GB), 500GB SSD
 - Open up port 22 for SSH, and port 5050 for both TCP and UDP traffic
 
 ## 2. Launch a read-only Opera node
- - Follow instructions in [launching go-opera readonly node](setup-readonly-node.sh). We don't recommend using snapsync for a validator datadir.
+- Follow instructions in [launching go-opera readonly node](setup-readonly-node.sh) with limitations:
+- - Use only `--syncmode full` option.
+- - Use only `--db.preset ldb-1` or `--db.preset legacy-ldb` options.
 
-Wait for your node to sync up
+Wait for your node to sync up. You may add `--exitwhensynced.age 10s` flag to automatically stop the node when synced.
 
 ## 3. Run Opera validator
 - Stop read-only node
@@ -26,15 +28,14 @@ killall opera
 - Then run your validator node:
 
 ```shell script
-nohup opera --genesis $GENESIS --syncmode full --validator.id ID --validator.pubkey 0xPubkey --validator.password /path/to/password --cache 8000 &
+nohup opera --syncmode full --cache $CACHE --db.preset ldb-1 --validator.id ID --validator.pubkey 0xPubkey --validator.password /path/to/password &
 ```
-, where:
 - `ID` is your validator ID (e.g. 25)
 - `0xPubkey` is your validator public key. You've generated your key with `opera validator new`.
 - `/path/to/password` is a path to a file which contains the password to decrypt the validator key (optional).
-- `8000` is amount of memory allocated for go-opera
 If you omitted the `--validator.password` flag, then you will be prompted for the password in terminal.
-
-It's recommended to use only fullsync mode for validator node.
+- `$CACHE` is amount of memory allocated for go-opera. Substitute half of server RAM capacity in MB.
+- Use only `--syncmode full` option.
+- Use only `--db.preset ldb-1` or `--db.preset legacy-ldb` options.
 
 It's complete. Your node is running!
