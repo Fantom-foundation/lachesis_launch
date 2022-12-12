@@ -22,7 +22,7 @@ Genesis files below can be processed only with go-opera v1.1.2-rc.4 or later.
 
 |                                             Name                                           | Fullsync | Snapsync | Blocks history | Starting EVM history |   Size   |
 |:------------------------------------------------------------------------------------------:|:--------:|:--------:|:--------------:|:--------------------:|:--------:|
-| [mainnet-171200-no-history.g](https://files.fantom.network/mainnet-171200-no-history.g)    | No       | Yes      | 50870730+      | No                   | 20 GB    |
+| [mainnet-171200-no-history.g](https://files.fantom.network/mainnet-171200-no-history.g)    | No       | Yes      | 43801590+      | No                   | 20 GB    |
 | [mainnet-171200-pruned-mpt.g](https://files.fantom.network/mainnet-171200-pruned-mpt.g)    | Yes      | Yes      | Full           | Pruned (one block)   | 122 GB   |
 
 ## Public testnet genesis files
@@ -42,6 +42,16 @@ Genesis files below can be processed only with go-opera v1.1.2-rc.4 or later.
 | [testnet-6226-no-mpt.g](https://download.fantom.network/testnet-6226-no-mpt.g)             | No       | Yes      | Full           | No                   | 2.0 GB   |
 | [testnet-6226-pruned-mpt.g](https://download.fantom.network/testnet-6226-pruned-mpt.g)     | Yes      | Yes      | Full           | Pruned (one block)   | 3.2 GB   |
 | [testnet-6226-full-mpt.g](https://download.fantom.network/testnet-6226-full-mpt.g)         | Yes      | Yes      | Full           | Full                 | 76.5 GB  |
+
+
+#### Epoch 16200, block 12262196
+
+|                                             Name                                           | Fullsync | Snapsync | Blocks history | Starting EVM history |   Size   |
+|:------------------------------------------------------------------------------------------:|:--------:|:--------:|:--------------:|:--------------------:|:--------:|
+| [testnet-16200-no-history.g](https://files.fantom.network/testnet-16200-no-history.g)      | No       | Yes      | 7650765+       | No                   | 1.5 GB   |
+| [testnet-16200-no-mpt.g](https://files.fantom.network/testnet-16200-no-mpt.g)              | No       | Yes      | Full           | No                   | 3.3 GB   |
+| [testnet-16200-pruned-mpt.g](https://files.fantom.network/testnet-16200-pruned-mpt.g)      | Yes      | Yes      | Full           | Pruned (one block)   | 5.5 GB   |
+| [testnet-16200-full-mpt.g](https://files.fantom.network/testnet-16200-full-mpt.g)          | Yes      | Yes      | Full           | Full                 | 116 GB   |
 
 
 ## FAQ
