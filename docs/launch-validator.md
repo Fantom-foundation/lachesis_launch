@@ -28,7 +28,7 @@ killall opera
 - Then run your validator node:
 
 ```shell script
-nohup opera --syncmode full --cache $CACHE --db.preset ldb-1 --validator.id ID --validator.pubkey 0xPubkey --validator.password /path/to/password &
+nohup opera --syncmode full --cache $CACHE --validator.id ID --validator.pubkey 0xPubkey --validator.password /path/to/password &
 ```
 - `ID` is your validator ID (e.g. 25)
 - `0xPubkey` is your validator public key. You've generated your key with `opera validator new`.
@@ -36,6 +36,5 @@ nohup opera --syncmode full --cache $CACHE --db.preset ldb-1 --validator.id ID -
 If you omitted the `--validator.password` flag, then you will be prompted for the password in terminal.
 - `$CACHE` is amount of memory allocated for go-opera. Substitute half of server RAM capacity in MB.
 - Use only `--syncmode full` option.
-- Use only `--db.preset ldb-1` or `--db.preset legacy-ldb` options.
 
 It's complete. Your node is running!
