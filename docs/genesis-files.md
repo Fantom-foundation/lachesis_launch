@@ -2,7 +2,7 @@
 
 #### Epoch 171200, block 50870730
 
-Genesis files below can be processed only with go-opera v1.1.2-rc.4 or later.
+Genesis files below can be processed only with go-opera v1.1.2-rc.5 or later.
 
 |                                             Name                                           | Fullsync | Snapsync | Blocks history | Starting EVM history |   Size   |
 |:------------------------------------------------------------------------------------------:|:--------:|:--------:|:--------------:|:--------------------:|:--------:|
@@ -29,7 +29,7 @@ Genesis files below can be processed only with go-opera v1.1.2-rc.4 or later.
 
 #### Epoch 16200, block 12262196
 
-Genesis files below can be processed only with go-opera v1.1.2-rc.4 or later.
+Genesis files below can be processed only with go-opera v1.1.2-rc.5 or later.
 
 |                                             Name                                           | Fullsync | Snapsync | Blocks history | Starting EVM history |   Size   |
 |:------------------------------------------------------------------------------------------:|:--------:|:--------:|:--------------:|:--------------------:|:--------:|

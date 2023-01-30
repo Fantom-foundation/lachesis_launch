@@ -1,4 +1,4 @@
-This document describes the steps to upgrade a node running go-opera v1.1.1 to the go-opera v1.1.2-rc.4
+This document describes the steps to upgrade a node running go-opera v1.1.1 to the go-opera v1.1.2-rc.5
 
 ### Stop the node
 
@@ -12,7 +12,7 @@ killall opera
 
 ```shell script
 cd go-opera/
-git checkout release/1.1.2-rc.4
+git checkout release/1.1.2-rc.5
 make
 ```
 
@@ -21,12 +21,12 @@ make
 ```
 ./build/opera version
 Go-Opera
-Version: 1.1.2-rc.4
+Version: 1.1.2-rc.5
 ```
 
 ### Migration flags
 
-There's two migration options for upgrading to 1.1.2-rc.4:
+There's two migration options for upgrading to 1.1.2-rc.5:
 - Preserving legacy DBs layout: `--db.migration.mode reformat --db.preset legacy-ldb`.
   This option is instant but involves no performance improvement for blocks/events processing.
 - Rebuilding DBs according to a new layout: `--db.migration.mode rebuild --db.preset X`, where X is a selected DBs layout.
