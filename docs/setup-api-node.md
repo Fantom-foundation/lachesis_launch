@@ -3,6 +3,15 @@
 ## 1. Launch a read-only Opera node
  - Follow instructions in [launching go-opera readonly node](setup-readonly-node.sh)
 
+### Migrate an existing API node
+Running with '--db.preset legacy-ldb --db.migration.mode reformat' doesn't need a resync.
+
+### Start a new API node
+You can use either `--db.preset legacy-ldb` or `--db.preset ldb-1` or `--db.preset pbl-1`.
+
+### Enable tracing API
+To enable tracing, you can add `--tracenode` flag.
+
 ## 2. Enabled API endpoints
 
 By default, the only way to send API requests to the node is via `.ipc` file inside the datadir.

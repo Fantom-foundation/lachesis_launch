@@ -20,8 +20,8 @@ sudo apt-get -y upgrade
 sudo apt-get install -y build-essential git
 
 # Install golang
-wget https://go.dev/dl/go1.18.2.linux-amd64.tar.gz
-sudo tar -xvf go1.18.2.linux-amd64.tar.gz -C /usr/local/
+wget https://go.dev/dl/go1.19.3.linux-amd64.tar.gz
+sudo tar -xvf go1.19.3.linux-amd64.tar.gz -C /usr/local/
 
 # Setup golang environment variables
 export GOROOT=/usr/local/go
