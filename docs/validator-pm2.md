@@ -1,6 +1,6 @@
-## Run validator in pm2
+## Run node in pm2
 
-Using pm2 is optional. If your node has crashed, pm2 may turn your node on right away, and it's not recommended.
+Using pm2 is optional. If your node has crashed, pm2 may turn your node on right away, and it's NOT recommended.
 Make sure to run in non-validate node to sync up the latest events and event blocks first. Once synced up, you can relaunch your node in validator mode.
 
 If you want to process with pm2, continue with the following steps
@@ -19,11 +19,11 @@ touch runNode.sh
 chmod +x runNode.sh
 ```
 
-and put in the following content
+and put in the following content with Opera flags
 
 ```shell script
 #!/bin/sh
-opera --genesis $GENESIS --syncmode full --validator.id ID --validator.pubkey 0xPubkey --validator.password /path/to/password
+opera your-flags
 ```
 
 Create the pm2 config file
