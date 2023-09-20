@@ -1,6 +1,6 @@
 ### Overview
 
-The latest version of a blockchain node for the Opera network is `go-opera 1.1.2-rc.6`. The oldest supported version is `go-opera 1.1.1-rc.2`.
+The latest version of a blockchain node for the Opera network is `go-opera 1.1.3-rc.4`. The oldest supported version is `go-opera 1.1.1-rc.2`.
 
 [Upgrade instruction](docs/upgrade.md)
 
@@ -12,13 +12,13 @@ The latest version of a blockchain node for the Opera network is `go-opera 1.1.2
 The upgrade is recommended for all nodes including API nodes and validator nodes.
 
 ### Instructions for a read node
-Read node can use `go-opera v1.1.2-rc.6` in either snap sync or full sync mode.
+Read node can use `go-opera v1.1.3-rc.4` in either snap sync or full sync mode.
 
 1. [Launching go-opera readonly node](docs/setup-readonly-node.sh)
 
 ### Instructions for an API node
 
-API node can use `go-opera v1.1.2-rc.6` in either snap sync or full sync mode.
+API node can use `go-opera v1.1.3-rc.4` in either snap sync or full sync mode.
 In a case if full history is needed, then use the latest archive genesis file in full sync mode.
 
 1. [Launching go-opera readonly node](docs/setup-readonly-node.sh)
@@ -26,7 +26,7 @@ In a case if full history is needed, then use the latest archive genesis file in
 
 ### Instructions for a validator
 
-Validator node is recommended to use `go-opera v1.1.2-rc.6` in full sync mode.
+Validator node is recommended to use `go-opera v1.1.3-rc.4` in full sync mode.
 
 1. [Launching go-opera readonly node](docs/setup-readonly-node.sh)
 2. [Creation of a validator](docs/create-validator.md)
