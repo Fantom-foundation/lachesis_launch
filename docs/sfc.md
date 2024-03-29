@@ -19,7 +19,7 @@ abi = JSON.parse('SFC_ABI_OUTPUT')
 sfcc = web3.ftm.contract(abi).at("0xfc00face00000000000000000000000000000000")
 ```
 
-The current sfc release is `3.0.4-rc.5`. The ABI output available at [SFC ABI v3](../releases/sfc-abi-3.0.4-rc.5.json).
+The current sfc release is `3.0.5-rc.1`. The ABI output available at [SFC ABI v3](../releases/sfc-abi-3.0.5-rc.1.json).
 
 ### Checking initializing SFC has worked
 
