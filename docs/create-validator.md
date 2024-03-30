@@ -65,6 +65,8 @@ personal.unlockAccount("0xYourAddress", "password", 60) // make sure account is 
 tx = sfcc.createValidator("0xYourPubkey", {from:"0xYourAddress", value: web3.toWei("500000.0", "ftm")}) // 500000.0 FTM
 ```
 
+Note: **make sure to not store the address key on the machine**! Move it to an airgapped device. If the key was ever stored on the server, securely erase it with `shred -vu`.
+
 
 Check the tx is confirmed
 ```
