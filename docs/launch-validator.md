@@ -37,6 +37,6 @@ If you omitted the `--validator.password` flag, then you will be prompted for th
 - `$CACHE` is amount of memory allocated for go-opera. Substitute half of server RAM capacity in MB.
 - Use only `--syncmode full` option.
 
-**Warning**: it's highly recommended to not store password in a file. Instead, avoid using `--validator.password` and type password manually after each restart. You may need to use `tmux` to detach the process after typing in the password.
+**Warning**: it's highly recommended to not store password in a file. Instead, avoid using `--validator.password` and type password manually after each restart or remove it with `shred -vu` after every restart.
 
 It's complete. Your node is running!
